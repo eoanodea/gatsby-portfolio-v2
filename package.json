@@ -1,10 +1,9 @@
 {
-  "name": "gatsby-starter-lil-learning-gatsby",
-  "private": true,
-  "description": "An opinionated starter for Gatsby",
+  "name": "eoan-odea-portfolio",
+  "description": "A portfolio website built using Gatsby",
   "version": "0.1.0",
-  "author": "Morten Rand-Hendriksen, LinkedIn Learning",
-  "license": "LinkedIn Learning Exercise Files License Agreement",
+  "author": "Eoan O'Dea",
+  "license": "MIT",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.45",
@@ -31,7 +30,7 @@
     "prettier": "2.0.4"
   },
   "keywords": [
-    "gatsby, linkedin learning, lil"
+    "gatsby, portfolio, react.js, graphql"
   ],
   "scripts": {
     "build": "gatsby build",
@@ -41,12 +40,5 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LinkedInLearning/learning-gatsby-2833047"
-  },
-  "bugs": {
-    "url": "https://github.com/LinkedInLearning/learning-gatsby-2833047/issues"
   }
 }
