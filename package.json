@@ -20,7 +20,6 @@
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-transformer-remark": "^2.8.25",
     "gatsby-transformer-sharp": "^2.5.11",
-    "gatsby-transformer-yaml": "^2.4.10",
     "prop-types": "^15.7.2",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -32,6 +31,10 @@
   "keywords": [
     "gatsby, portfolio, react.js, graphql"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eoanodea/gatsby-portfolio-v2.git"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

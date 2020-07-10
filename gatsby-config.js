@@ -52,19 +52,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `events`,
-        path: `${__dirname}/content/events/`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-yaml`,
-      options: {
-        typeName: `Event`, // a fixed string
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `articles`,
         path: `${__dirname}/content/articles/`,
       },
