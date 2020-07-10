@@ -6,16 +6,16 @@
 
 module.exports = {
   siteMetadata: {
-    title: `The Project`,
-    titleTemplate: `%s · a starting point`,
+    title: `Eoan O'Dea`,
+    titleTemplate: `%s · Full Stack Developer, Designer, Engineer & Entrepreneur`,
     author: {
-      name: `Morten Rand-Hendriksen`,
-      summary: `a ballroom dancer playing at being a developer.`,
+      name: `Eoan O'Dea`,
+      summary: `A Computer Science student and Freelance Web Developer`,
     },
-    description: `An opinionated starter for Gatsby`,
+    description: `Some description`,
     url: `https://something.or.other`,
     logo: `/logo.png`,
-    twitter: `mor10`,
+    twitter: `no twitter here`,
     menuLinks: [
       {
         name: `Home`,
