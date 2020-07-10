@@ -5,43 +5,43 @@ import _ from "lodash"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import style from "./article.module.css"
+import style from "./project.module.css"
 
 export default ({ data }) => {
-  const article = data.markdownRemark
+  const project = data.markdownRemark
   return (
     <Layout>
       <SEO
-        title={article.frontmatter.title}
-        description={article.excerpt}
-        image="/logo.png"
-        pathname={article.fields.slug}
-        // Boolean indicating whether this is an article:
-        article
+        title={project.frontmatter.title}
+        description={project.excerpt}
+        image="/icon.png"
+        pathname={project.fields.slug}
+        // Boolean indicating whether this is an project:
+        project
       />
-      <article className={style.article}>
-        {article.frontmatter.featimg && (
+      <project className={style.project}>
+        {project.frontmatter.featimg && (
           <figure className={style.featimg}>
             <Img
-              fluid={article.frontmatter.featimg.childImageSharp.fluid}
-              alt={article.frontmatter.title}
+              fluid={project.frontmatter.featimg.childImageSharp.fluid}
+              alt={project.frontmatter.title}
             />
           </figure>
         )}
 
-        <h1 className={style.article__title}>{article.frontmatter.title}</h1>
+        <h1 className={style.project__title}>{project.frontmatter.title}</h1>
 
-        <div className={style.article__meta}>
-          by {article.frontmatter.author}. Published{" "}
-          {new Date(article.frontmatter.date).toLocaleDateString("en-US", {
+        <div className={style.project__meta}>
+          by {project.frontmatter.author}. Published{" "}
+          {new Date(project.frontmatter.date).toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
             year: "numeric",
           })}{" "}
         </div>
-        <div className={style.article__tax}>
+        <div className={style.project__tax}>
           Filed under:{" "}
-          {article.frontmatter.subject.map((subject, index) => [
+          {project.frontmatter.subject.map((subject, index) => [
             index > 0 && ", ",
             <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
               {subject}
@@ -49,11 +49,11 @@ export default ({ data }) => {
           ])}
         </div>
         <div
-          className={style.article__content}
+          className={style.project__content}
           // See https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
-          dangerouslySetInnerHTML={{ __html: article.html }}
+          dangerouslySetInnerHTML={{ __html: project.html }}
         />
-      </article>
+      </project>
     </Layout>
   )
 }

@@ -5,19 +5,17 @@ import PropTypes from "prop-types"
 import MainNav from "./mainnav"
 import style from "./header.module.css"
 
-const Header = ({ siteTitle, siteDescription, menuLinks }) => (
+const Header = ({ siteTitle, menuLinks }) => (
   <header id="site-header" className={style.masthead} role="banner">
     <div className={style.masthead_info}>
       <Link to="/">
         <img
-          src="/logo.svg"
-          width="366"
-          height="374"
+          src="/logo.png"
+          width="100"
+          height="100"
           alt={siteTitle}
           className={style.site_logo}
         />
-        <div className={style.site_title}>{siteTitle}</div>
-        <div className={style.site_description}>{siteDescription}</div>
       </Link>
     </div>
     <MainNav menuLinks={menuLinks} />

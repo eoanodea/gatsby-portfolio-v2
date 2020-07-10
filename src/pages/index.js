@@ -1,6 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -25,8 +26,8 @@ const IndexPage = ({ data }) => {
         description="A Gatsby site to be proud of."
         image="/logo.png"
         pathname="/"
-        // Boolean indicating whether this is an article:
-        // article
+        // Boolean indicating whether this is an project:
+        // project
       />
       <section className={style.wrapper}>
         <Img
@@ -46,7 +47,7 @@ const IndexPage = ({ data }) => {
           <p>
             Make sure to check out the updated templates to see how the SEO
             component is used, updated gatsby-node.js file for an additional
-            function to handle markdown articles without subject taxonomies, and
+            function to handle markdown projects without subject taxonomies, and
             feel free to use this site as a template to build your own sites
             with Gatsby!
           </p>

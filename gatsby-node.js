@@ -43,7 +43,7 @@ exports.createResolvers = ({ createResolvers, getNode }) => {
 }
 
 /**
- * Articles
+ * Projects
  */
 
 // Default subject taxonomy to "random" if no subject provided.
@@ -81,12 +81,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     actions.createNodeField({
       node,
       name: `slug`,
-      value: `/articles${slug}`,
+      value: `/projects${slug}`,
     })
   }
 }
 
-// Generate pages for each article.
+// Generate pages for each project.
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
@@ -125,7 +125,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   posts.forEach(post => {
     createPage({
       path: post.node.fields.slug,
-      component: path.resolve(`./src/templates/article.js`),
+      component: path.resolve(`./src/templates/project.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -139,8 +139,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage, // The Gatsby `createPage` function
     items: posts, // An array of objects
     itemsPerPage: 2, // How many items you want per page
-    pathPrefix: "/articles", // Creates pages like `/blog`, `/blog/2`, etc
-    component: path.resolve(`./src/templates/articles.js`), // Just like `createPage()`
+    pathPrefix: "/projects", // Creates pages like `/blog`, `/blog/2`, etc
+    component: path.resolve(`./src/templates/projects.js`), // Just like `createPage()`
   })
 
   const taxonomies = queryResult.data.taxQuery.group

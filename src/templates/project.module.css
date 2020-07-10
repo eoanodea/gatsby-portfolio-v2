@@ -1,10 +1,10 @@
-.article__meta,
-.article__tax {
+.project__meta,
+.project__tax {
   font-family: var(--highlight-font);
   font-size: 80%;
 }
 
-.article {
+.project {
   max-width: var(--content-w-regular);
   margin: 0 auto;
   padding: 0 2rem;
@@ -16,26 +16,26 @@
   margin-right: -2rem;
 }
 
-.article__title {
+.project__title {
   margin-bottom: 1rem;
   padding-top: 4rem;
   font-size: 4rem;
   text-align: center;
 }
 
-.article__meta::before {
+.project__meta::before {
   display: block;
   margin: 0 auto 1rem;
   content: "- — -";
 }
 
-.article__meta,
-.article__tax {
+.project__meta,
+.project__tax {
   margin-top: 0;
   text-align: center;
 }
 
-.article__content {
+.project__content {
   max-width: var(--content-w-narrow);
   margin: 3rem auto;
 }

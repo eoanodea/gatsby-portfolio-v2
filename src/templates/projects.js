@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import _ from "lodash"
 
-import style from "./articles.module.css"
+import style from "./projects.module.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
@@ -12,21 +12,21 @@ import Pagination from "../components/pagination"
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children
 
-const ArticleIndex = ({ data, pageContext }) => {
+const ProjectIndex = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
     <Layout>
       <SEO
-        title="Articles"
-        description="All articles published by the Project"
+        title="Projects"
+        description="All projects published by the Project"
         image="/logo.png"
-        pathname="/articles"
-        // Boolean indicating whether this is an article:
-        // article
+        pathname="/projects"
+        // Boolean indicating whether this is an project:
+        // project
       />
-      <section className={style.articlelist}>
-        <h2>Articles</h2>
+      <section className={style.projectlist}>
+        <h2>Projects</h2>
         <ul>
           {posts.map(({ node }, index) => (
             <li key={index} className={style.listitem}>
@@ -44,16 +44,16 @@ const ArticleIndex = ({ data, pageContext }) => {
                 // If featured image, wrap content in <div>.
                 condition={node.frontmatter.featimg}
                 wrapper={children => (
-                  <div className={style.article__wrap}>{children}</div>
+                  <div className={style.project__wrap}>{children}</div>
                 )}
               >
                 <Link to={node.fields.slug}>
-                  <h1 className={style.article__title}>
+                  <h1 className={style.project__title}>
                     {node.frontmatter.title}
                   </h1>
                 </Link>
 
-                <div className={style.article__meta}>
+                <div className={style.project__meta}>
                   by {node.frontmatter.author}. Published{" "}
                   {new Date(node.frontmatter.date).toLocaleDateString("en-US", {
                     month: "long",
@@ -61,7 +61,7 @@ const ArticleIndex = ({ data, pageContext }) => {
                     year: "numeric",
                   })}{" "}
                 </div>
-                <div className={style.article__tax}>
+                <div className={style.project__tax}>
                   Filed under:{" "}
                   {node.frontmatter.subject.map((subject, index) => [
                     index > 0 && ", ",
@@ -71,7 +71,7 @@ const ArticleIndex = ({ data, pageContext }) => {
                   ])}
                 </div>
                 <div
-                  className={style.article__content}
+                  className={style.project__content}
                   dangerouslySetInnerHTML={{ __html: node.excerpt }}
                 />
               </ConditionalWrapper>
@@ -84,7 +84,7 @@ const ArticleIndex = ({ data, pageContext }) => {
   )
 }
 
-export default ArticleIndex
+export default ProjectIndex
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {

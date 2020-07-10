@@ -14,8 +14,8 @@ const AboutPage = ({ data }) => {
         description="Information about the site."
         image="/logo.png"
         pathname="/about"
-        // Boolean indicating whether this is an article:
-        // article
+        // Boolean indicating whether this is an project:
+        // project
       />
       <section className={style.wrapper}>
         <Img fluid={data.headerImage.childImageSharp.fluid} alt="Robots" />

@@ -1,16 +1,16 @@
-.articlelist {
+.projectlist {
   max-width: var(--content-w-regular);
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.articlelist h2 {
+.projectlist h2 {
   margin-top: 3rem;
   font-size: 4rem;
   text-align: center;
 }
 
-.articlelist ul {
+.projectlist ul {
   margin: 0;
   padding: 0;
 }
@@ -19,8 +19,8 @@ a {
   color: inherit;
 }
 
-.article__meta,
-.article__tax {
+.project__meta,
+.project__tax {
   font-family: var(--highlight-font);
   font-size: 80%;
 }
@@ -39,10 +39,10 @@ a {
   margin-left: 2rem;
 }
 
-.listitem .article__title {
+.listitem .project__title {
   font-size: 3rem;
 }
 
-.listitem .article__content {
+.listitem .project__content {
   margin-top: 1rem;
 }
