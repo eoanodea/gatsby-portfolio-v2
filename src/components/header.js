@@ -1,35 +1,56 @@
-import React from "react"
+import React, { Fragment } from "react"
+import Headroom from "react-headroom"
+import { Flex, Image } from "rebass/styled-components"
+import styled from "styled-components"
+import RouteLink from "./RouteLink"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 
-import MainNav from "./mainnav"
-import style from "./header.module.css"
+const HeaderContainer = styled(Headroom)`
+  * {
+    transition: background-color 0.1s ease;
+  }
 
-const Header = ({ siteTitle, menuLinks }) => (
-  <header id="site-header" className={style.masthead} role="banner">
-    <div className={style.masthead_info}>
-      <Link to="/">
-        <img
-          src="/logo.png"
-          width="100"
-          height="100"
-          alt={siteTitle}
-          className={style.site_logo}
-        />
-      </Link>
-    </div>
-    <MainNav menuLinks={menuLinks} />
-  </header>
-)
+  .headroom--pinned {
+    background-color: ${props => props.theme.colors.primaryDark};
+  }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-  siteDescription: PropTypes.string,
-}
+  position: absolute;
+  width: 100%;
+`
 
-Header.defaultProps = {
-  siteTitle: ``,
-  siteDescription: ``,
+const Header = ({ menuLinks }) => {
+  const homeLink = (
+    <Link to="/">
+      <Image
+        src="/logo.svg"
+        width="366"
+        alt="Portfolio Logo"
+        style={{
+          cursor: "pointer",
+        }}
+      />
+    </Link>
+  )
+
+  const navLinks = menuLinks.map((dat, i) => (
+    <RouteLink key={i} link={dat.link} selected={false} name={dat.name} />
+  ))
+
+  return (
+    <HeaderContainer>
+      <Flex
+        flexWrap="wrap"
+        justifyContent="space-between"
+        alignItems="center"
+        p={3}
+      >
+        <Fragment>
+          {homeLink}
+          <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
+        </Fragment>
+      </Flex>
+    </HeaderContainer>
+  )
 }
 
 export default Header

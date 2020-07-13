@@ -1,22 +1,58 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useEffect } from "react"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import PropTypes from "prop-types"
+import { ScrollingProvider } from "react-scroll-section"
+import config from "react-reveal/globals"
+import preset from "@rebass/preset"
+import colors from "../../colors"
 import Footer from "./footer"
+import Header from "./header"
 
-// Styles
-import "../styles/reset.css"
-import "../styles/accessibility.css"
-import "../styles/global.module.css"
-import "../fonts/fonts.css"
-import style from "./layout.module.css"
+const GlobalStyle = createGlobalStyle`
+  *,
+  *::after,
+  *::before { 
+    box-sizing: inherit;
+    }
+  body {
+    box-sizing: border-box; 
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    width: 100vw;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
+  }
+  h1, h2 {
+    font-family: 'Montserrat';
+  }
+  p {
+    font-size: 1.3em;
+    font-weight: 400
+  }
+`
+
+config({ ssrFadeout: true })
+
+const loadScript = src => {
+  const tag = document.createElement("script")
+  tag.src = src
+  tag.defer = true
+
+  document.getElementsByTagName("body")[0].appendChild(tag)
+}
+
+const theme = {
+  ...preset,
+  colors,
+  fonts: {
+    body: "Roboto, sans-serif",
+    heading: "inherit",
+    monospace: "monospace",
+  },
+}
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -34,22 +70,26 @@ const Layout = ({ children }) => {
     }
   `)
 
+  useEffect(() => {
+    loadScript("https://use.fontawesome.com/fd58d214b9.js")
+  }, [])
+
   return (
-    <>
-      <a className="skip-link screen-reader-text" href="#primary">
-        Skip to the content
-      </a>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        siteDescription={data.site.siteMetadata.description}
-        menuLinks={data.site.siteMetadata.menuLinks}
-      />
-      <main id="primary" className={style.site_main}>
-        {children}
-      </main>
-      <Footer siteTitle={data.site.siteMetadata.title} />
-    </>
+    <main>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <ScrollingProvider>
+          <Header menuLinks={data.site.siteMetadata.menuLinks} />
+          {children}
+          <Footer />
+        </ScrollingProvider>
+      </ThemeProvider>
+    </main>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout
