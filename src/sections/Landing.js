@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import { StaticQuery, graphql } from "gatsby"
 import { Heading, Flex, Box, Text } from "rebass/styled-components"
 import TextLoop from "react-text-loop"
 import { SectionLink } from "react-scroll-section"
@@ -41,83 +40,47 @@ const Background = () => (
 
 const centerHorizontally = { marginRight: "auto", marginLeft: "auto" }
 
-const LandingPage = () => (
+const LandingPage = ({ name, socialLinks, roles }) => (
   <Section.Container id="home" Background={Background}>
-    <StaticQuery
-      query={graphql`
-        query AboutSectionQuery {
-          allMarkdownRemark(
-            filter: { frontmatter: { title: { eq: "About" } } }
-          ) {
-            edges {
-              node {
-                id
-                frontmatter {
-                  title
-                  name
-                  roles
-                  socialLinks {
-                    name
-                    link
-                    icon
-                  }
-                }
-                html
-              }
-            }
-          }
-        }
-      `}
-      render={({ allMarkdownRemark }) => {
-        const {
-          name,
-          socialLinks,
-          roles,
-        } = allMarkdownRemark.edges[0].node.frontmatter
+    <Fragment>
+      <Heading
+        textAlign="center"
+        as="h1"
+        color="text"
+        fontSize={[6, 7]}
+        mb={[3, 4, 5]}
+      >
+        {`Hey, I'm ${name}.`}
+      </Heading>
 
-        return (
-          <Fragment>
-            <Heading
-              textAlign="center"
-              as="h1"
-              color="text"
-              fontSize={[6, 7]}
-              mb={[3, 4, 5]}
-            >
-              {`Hey, I'm ${name}.`}
-            </Heading>
+      <Heading
+        as="h2"
+        color="primary"
+        fontSize={[5, 6]}
+        mb={[3, 5]}
+        textAlign="center"
+        style={centerHorizontally}
+      >
+        <TextLoop interval={5000}>
+          {roles.map(text => (
+            <Text width={[300, 500]} key={text}>
+              {text}
+            </Text>
+          ))}
+        </TextLoop>
+      </Heading>
 
-            <Heading
-              as="h2"
-              color="primary"
-              fontSize={[5, 6]}
-              mb={[3, 5]}
-              textAlign="center"
-              style={centerHorizontally}
-            >
-              <TextLoop interval={5000}>
-                {roles.map(text => (
-                  <Text width={[300, 500]} key={text}>
-                    {text}
-                  </Text>
-                ))}
-              </TextLoop>
-            </Heading>
-
-            <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
-              {socialLinks.map(({ ...rest }, i) => (
-                <Box mx={3} fontSize={[5, 6, 6]} key={i}>
-                  <SocialLink {...rest} />
-                </Box>
-              ))}
-            </Flex>
-            <SectionLink section="about">
-              {({ onClick }) => <MouseIcon onClick={onClick} />}
-            </SectionLink>
-          </Fragment>
-        )
-      }}
-    />
+      <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
+        {socialLinks.map(({ ...rest }, i) => (
+          <Box mx={3} fontSize={[5, 6, 6]} key={i}>
+            <SocialLink {...rest} />
+          </Box>
+        ))}
+      </Flex>
+      <SectionLink section="about">
+        {({ onClick }) => <MouseIcon onClick={onClick} />}
+      </SectionLink>
+    </Fragment>
   </Section.Container>
 )
 

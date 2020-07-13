@@ -41,22 +41,14 @@ const ProfilePicture = styled(Image)`
   }
 `
 
-const About = () => (
+const About = ({ markDown }) => (
   <Section.Container id="about" Background={Background}>
     <Section.Header name="About" label="person" />
     <StaticQuery
       query={graphql`
         {
-          headerImage: file(
-            relativePath: {
-              eq: "robots-androids-and-cyborgs-oh-my-1184x360.jpg"
-            }
-          ) {
-            childImageSharp {
-              fluid(maxWidth: 1184) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+          robotImage: file(relativePath: { eq: "bubbles-disc.png" }) {
+            publicURL
           }
         }
       `}
@@ -65,11 +57,7 @@ const About = () => (
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
             <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
               <Fade bottom>
-                {/* <ReactMarkdown
-                  source={aboutMe.childMarkdownRemark.rawMarkdownBody}
-                  renderers={markdownRenderer}
-                /> */}
-                hello
+                <ReactMarkdown source={markDown} renderers={markdownRenderer} />
               </Fade>
             </Box>
 
@@ -79,7 +67,7 @@ const About = () => (
             >
               <Fade right>
                 <ProfilePicture
-                  src={headerImage.childImageSharp.fluid}
+                  src={data.robotImage.publicURL}
                   alt={"Robot"}
                   mt={[4, 4, 0]}
                   ml={[0, 0, 1]}

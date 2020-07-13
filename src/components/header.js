@@ -22,8 +22,8 @@ const Header = ({ menuLinks }) => {
   const homeLink = (
     <Link to="/">
       <Image
-        src="/logo.svg"
-        width="366"
+        src="/logo.png"
+        width="60"
         alt="Portfolio Logo"
         style={{
           cursor: "pointer",
