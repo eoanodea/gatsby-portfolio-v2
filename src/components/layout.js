@@ -7,8 +7,8 @@ import { ScrollingProvider } from "react-scroll-section"
 import config from "react-reveal/globals"
 import preset from "@rebass/preset"
 import colors from "../../colors"
-import Footer from "./footer"
-import Header from "./header"
+import Footer from "./Footer"
+import Header from "./Header"
 
 const GlobalStyle = createGlobalStyle`
   *,

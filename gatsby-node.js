@@ -125,7 +125,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   posts.forEach(post => {
     createPage({
       path: post.node.fields.slug,
-      component: path.resolve(`./src/templates/project.js`),
+      component: path.resolve(`./src/templates/Project.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -140,7 +140,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     items: posts, // An array of objects
     itemsPerPage: 2, // How many items you want per page
     pathPrefix: "/projects", // Creates pages like `/blog`, `/blog/2`, etc
-    component: path.resolve(`./src/templates/projects.js`), // Just like `createPage()`
+    component: path.resolve(`./src/templates/Projects.js`), // Just like `createPage()`
   })
 
   const taxonomies = queryResult.data.taxQuery.group
@@ -150,7 +150,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       items: nodes, // An array of objects
       itemsPerPage: 2, // How many items you want per page
       pathPrefix: `/subjects/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
-      component: path.resolve(`./src/templates/subjects.js`), // Just like `createPage()`
+      component: path.resolve(`./src/templates/Subjects.js`), // Just like `createPage()`
       context: { subject: fieldValue },
     })
   })

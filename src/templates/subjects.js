@@ -4,9 +4,9 @@ import Img from "gatsby-image"
 import _ from "lodash"
 
 import style from "./projects.module.css"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Pagination from "../components/pagination"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
+import Pagination from "../components/Pagination"
 
 // Component to place a conditional wrapper around content.
 const ConditionalWrapper = ({ condition, wrapper, children }) =>

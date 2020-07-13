@@ -3,8 +3,8 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import _ from "lodash"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import style from "./project.module.css"
 
 export default ({ data }) => {
