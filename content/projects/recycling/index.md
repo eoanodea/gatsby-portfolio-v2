@@ -1,8 +1,12 @@
 ---
 title: Robotic Waste Recycling
-date: 2019-09-24
 subject: ["lifestyle", "technology"]
-author: Spring
+date: 2020-07-08
+description: Competitive party game hybrid application
+tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
+platform: ["web"]
+featimg: getting-creative-with-3-d-printers-1184x360.jpg
+repositoryUrl: https://github.com/drinking-game-app/frontend
 featimg: robotic-waste-recycling-1184x360.jpg
 ---
 

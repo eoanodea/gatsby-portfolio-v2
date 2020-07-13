@@ -13,7 +13,7 @@ export default ({ data }) => {
     <Layout>
       <SEO
         title={project.frontmatter.title}
-        description={project.excerpt}
+        description={project.frontmatter.description}
         image="/icon.png"
         pathname={project.fields.slug}
         // Boolean indicating whether this is an project:
@@ -32,16 +32,11 @@ export default ({ data }) => {
         <h1 className={style.project__title}>{project.frontmatter.title}</h1>
 
         <div className={style.project__meta}>
-          by {project.frontmatter.author}. Published{" "}
-          {new Date(project.frontmatter.date).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}{" "}
+          {new Date(project.frontmatter.date)}
         </div>
         <div className={style.project__tax}>
           Filed under:{" "}
-          {project.frontmatter.subject.map((subject, index) => [
+          {project.frontmatter.tools.map((subject, index) => [
             index > 0 && ", ",
             <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
               {subject}
@@ -67,16 +62,14 @@ export const query = graphql`
         slug
       }
       frontmatter {
+        name
+        platform
+        description
+        date(locale: "YYYY MMMM DD")
+        repositoryUrl
         title
-        date
-        subject
-        author
         featimg {
-          childImageSharp {
-            fluid(maxWidth: 1360) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          publicURL
         }
       }
     }

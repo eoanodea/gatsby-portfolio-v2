@@ -61,16 +61,11 @@ const ProjectIndex = ({ data, pageContext }) => {
                 </Link>
 
                 <div className={style.project__meta}>
-                  by {node.frontmatter.author}. Published{" "}
-                  {new Date(node.frontmatter.date).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}{" "}
+                  {new Date(node.frontmatter.date)}
                 </div>
                 <div className={style.project__tax}>
                   Filed under:{" "}
-                  {node.frontmatter.subject.map((subject, index) => [
+                  {node.frontmatter.tools.map((subject, index) => [
                     index > 0 && ", ",
                     <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
                       {subject}
@@ -108,8 +103,8 @@ export const query = graphql`
           frontmatter {
             title
             date
-            subject
-            author
+            tools
+            platform
             featimg {
               childImageSharp {
                 fixed(width: 400, height: 400, cropFocus: ATTENTION) {

@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
   *::before { 
     box-sizing: inherit;
     }
+  a {
+    text-decoration: none;
+  }
   body {
     box-sizing: border-box; 
     margin: 0;

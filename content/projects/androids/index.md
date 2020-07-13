@@ -1,8 +1,11 @@
 ---
 title: Robots, Androids, and Cyborgs, Oh My!
-date: 2019-10-22
-subject: ["product", "technology"]
-author: Dolores
+date: 2020-07-08
+description: Competitive party game hybrid application
+tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
+platform: ["web"]
+featimg: getting-creative-with-3-d-printers-1184x360.jpg
+repositoryUrl: https://github.com/drinking-game-app/frontend
 featimg: robots-androids-and-cyborgs-oh-my-1184x360.jpg
 ---
 

@@ -98,10 +98,11 @@ export const query = graphql`
           excerpt
           id
           frontmatter {
+            platform
+            description
+            date(locale: "YYYY MMMM DD")
+            repositoryUrl
             title
-            date
-            subject
-            author
             featimg {
               childImageSharp {
                 fixed(width: 400, height: 400, cropFocus: ATTENTION) {

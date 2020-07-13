@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Landing from "../sections/Landing"
 import About from "../sections/About"
+import Projects from "../sections/Projects"
 
 import SEO from "../components/SEO"
 
@@ -55,6 +56,7 @@ const IndexPage = () => {
             <Fragment>
               <Landing socialLinks={socialLinks} name={name} roles={roles} />
               <About markDown={rawMarkdownBody} />
+              <Projects />
             </Fragment>
           )
         }}

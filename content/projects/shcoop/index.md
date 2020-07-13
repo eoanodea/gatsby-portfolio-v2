@@ -1,12 +1,15 @@
 ---
-title: Getting Creative with 3D Printers
-date: 2019-10-15
-subject: ["automation", "technology"]
-author: Dolores
+title: Shcoop App
+date: 2020-07-08
+description: Competitive party game hybrid application
+tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
+platform: ["web", "iOS", "Android"]
 featimg: getting-creative-with-3-d-printers-1184x360.jpg
+repositoryUrl: https://github.com/drinking-game-app/frontend
+projectUrl: https://shcoop.wspace.ie
 ---
 
-Imperdiet cryptocurrency, blockstack IRC adopters modem. Has monitor bit router, upload change read, venture array goods node log file script. Platform graphics devices millennial, brute-force products queue, news laser printer blockstack html powered router online. Internet allied cyber security, zip build, hypertext data mining decentralized geek anywhere. Change dot millennial, byte fab, software cybercrime log out bus buffer sys admin.
+Shcoop is a competitive party game where you and your friends can be put up against each other. I lead the project with a team of 3 developers, a designer and a project manager, who are all students.
 
 ## Trojan horse analog CPU
 

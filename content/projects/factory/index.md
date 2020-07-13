@@ -1,8 +1,11 @@
 ---
 title: The Real Story Behind Factory Automation
-date: 2019-10-08
-subject: ["automation", "products", "technology"]
-author: Levi
+date: 2020-07-08
+description: Competitive party game hybrid application
+tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
+platform: ["web"]
+featimg: getting-creative-with-3-d-printers-1184x360.jpg
+repositoryUrl: https://github.com/drinking-game-app/frontend
 featimg: the-real-story-behind-factory-automation-1184x360.jpg
 ---
 

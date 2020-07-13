@@ -1,8 +1,11 @@
 ---
 title: Using Artificial Intelligence to Do Good
-date: 2019-10-01
-subject: ["automation", "lifestyle", "technology"]
-author: Fred
+date: 2020-07-08
+description: Competitive party game hybrid application
+tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
+platform: ["web"]
+featimg: getting-creative-with-3-d-printers-1184x360.jpg
+repositoryUrl: https://github.com/drinking-game-app/frontend
 featimg: using-artificial-intelligence-to-do-good-1184x360.jpg
 ---
 
