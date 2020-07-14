@@ -46,7 +46,7 @@ exports.createResolvers = ({ createResolvers, getNode }) => {
  * Projects
  */
 
-// Default subject taxonomy to "random" if no subject provided.
+// Default tools taxonomy to "random" if no tools provided.
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions
   const typeDefs = [
@@ -54,17 +54,17 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     schema.buildObjectType({
       name: "Frontmatter",
       fields: {
-        subject: {
+        tools: {
           type: "[String!]",
           resolve(source, args, context, info) {
-            const { subject } = source
+            const { tools } = source
             if (
-              source.subject == null ||
-              (Array.isArray(subject) && !subject.length)
+              source.tools == null ||
+              (Array.isArray(tools) && !tools.length)
             ) {
               return ["random"]
             }
-            return subject
+            return tools
           },
         },
       },
@@ -106,7 +106,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       taxQuery: allMarkdownRemark {
-        group(field: frontmatter___subject) {
+        group(field: frontmatter___tools) {
           nodes {
             id
           }
@@ -149,9 +149,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       createPage, // The Gatsby `createPage` function
       items: nodes, // An array of objects
       itemsPerPage: 2, // How many items you want per page
-      pathPrefix: `/subjects/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
+      pathPrefix: `/tools/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
       component: path.resolve(`./src/templates/Subjects.js`), // Just like `createPage()`
-      context: { subject: fieldValue },
+      context: { tools: fieldValue },
     })
   })
 }

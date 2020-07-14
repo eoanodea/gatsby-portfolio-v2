@@ -14,21 +14,21 @@ const ConditionalWrapper = ({ condition, wrapper, children }) =>
 
 const ProjectIndex = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
-  const { subject } = pageContext
+  const { tools } = pageContext
   console.log(pageContext)
 
   let pageHeader = `Projects`
-  if (subject) {
-    pageHeader = `Filed under ${subject}:`
+  if (tools) {
+    pageHeader = `Filed under ${tools}:`
   }
 
   return (
     <Layout>
       <SEO
-        title={`All projects on the subject "${subject}"`}
-        description="All projects filed under this subject."
+        title={`All projects on the tools "${tools}"`}
+        description="All projects filed under this tools."
         image="/logo.png"
-        pathname={`/subjects/${subject}`}
+        pathname={`/tools/${tools}`}
         // Boolean indicating whether this is an project:
         // project
       />
@@ -61,21 +61,18 @@ const ProjectIndex = ({ data, pageContext }) => {
                 </Link>
 
                 <div className={style.project__meta}>
-                  {new Date(node.frontmatter.date)}
+                  {node.frontmatter.date}
                 </div>
                 <div className={style.project__tax}>
                   Filed under:{" "}
-                  {node.frontmatter.tools.map((subject, index) => [
+                  {node.frontmatter.tools.map((tools, index) => [
                     index > 0 && ", ",
-                    <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
-                      {subject}
+                    <Link key={index} to={`/tools/${_.kebabCase(tools)}`}>
+                      {tools}
                     </Link>,
                   ])}
                 </div>
-                <div
-                  className={style.project__content}
-                  dangerouslySetInnerHTML={{ __html: node.excerpt }}
-                />
+                <p>{node.frontmatter.description}</p>
               </ConditionalWrapper>
             </li>
           ))}
@@ -89,9 +86,9 @@ const ProjectIndex = ({ data, pageContext }) => {
 export default ProjectIndex
 
 export const query = graphql`
-  query($subject: String!, $skip: Int!, $limit: Int!) {
+  query($tools: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { subject: { in: [$subject] } } }
+      filter: { frontmatter: { tools: { in: [$tools] } } }
       sort: { fields: [frontmatter___date], order: DESC }
       skip: $skip
       limit: $limit
@@ -101,10 +98,13 @@ export const query = graphql`
           excerpt
           id
           frontmatter {
-            title
-            date
-            tools
             platform
+            description
+            date(formatString: "YYYY")
+            repositoryUrl
+            projectUrl
+            title
+            tools
             featimg {
               childImageSharp {
                 fixed(width: 400, height: 400, cropFocus: ATTENTION) {

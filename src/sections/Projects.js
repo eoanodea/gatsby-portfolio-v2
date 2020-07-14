@@ -1,6 +1,6 @@
 import React from "react"
 // import PropTypes from "prop-types"
-import { Image, Text, Flex, Box } from "rebass/styled-components"
+import { Image, Text, Flex, Box, Heading } from "rebass/styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Fade from "react-reveal/Fade"
@@ -10,6 +10,7 @@ import SocialLink from "../components/SocialLink"
 import Triangle from "../components/Triangle"
 import ImageSubtitle from "../components/ImageSubtitle"
 import Hide from "../components/Hide"
+import LinkAnimated from "../components/LinkAnimated"
 
 const Background = () => (
   <div>
@@ -47,14 +48,6 @@ const Background = () => (
 const CARD_HEIGHT = "200px"
 
 const MEDIA_QUERY_SMALL = "@media (max-width: 400px)"
-
-const Title = styled(Text)`
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display: table;
-  border-bottom: ${props => props.theme.colors.primary} 5px solid;
-`
 
 const TextContainer = styled.div`
   display: flex;
@@ -103,96 +96,87 @@ const ProjectTag = styled.div`
   }
 `
 
-const Project = (
-  //   {
-  //   title,
-  //   description,
-  //   projectUrl,
-  //   repositoryUrl,
-  //   platform,
-  //   date,
-  //   featimg,
-  // }
-  { fields, frontmatter }
-) => {
+const Project = ({ fields, frontmatter }) => {
   return (
-    <Link to={fields.slug}>
-      <Card p={0}>
-        <Flex style={{ height: CARD_HEIGHT }}>
-          <TextContainer>
-            <span>
-              <Title my={2} pb={1} color="text">
+    <Card p={0}>
+      <Flex style={{ height: CARD_HEIGHT }}>
+        <TextContainer>
+          <Link to={fields.slug}>
+            <Heading
+              style={{ fontSize: "1.5em", fontWeight: 500 }}
+              color="secondaryDark"
+              mb={4}
+            >
+              <LinkAnimated alt selected>
                 {frontmatter.title}
-              </Title>
-            </span>
+              </LinkAnimated>
+            </Heading>
             <Text width={[1]} style={{ overflow: "auto" }} color="text">
               {frontmatter.description}
             </Text>
-          </TextContainer>
+          </Link>
+        </TextContainer>
 
-          <ImageContainer>
-            <ProjectImage
-              src={frontmatter.featimg.publicURL}
-              alt={frontmatter.title}
-            />
-            <ProjectTag>
-              <Flex
-                style={{
-                  float: "right",
-                }}
-              >
-                {frontmatter.repositoryUrl && frontmatter.repositoryUrl !== "" && (
-                  <Box mx={1} fontSize={5}>
-                    <SocialLink
-                      name="Check repository"
-                      icon="github"
-                      link={frontmatter.repositoryUrl}
-                    />
-                  </Box>
-                )}
+        <ImageContainer>
+          <ProjectImage
+            src={frontmatter.featimg.publicURL}
+            alt={frontmatter.title}
+          />
+          <ProjectTag>
+            <Flex
+              style={{
+                float: "right",
+              }}
+            >
+              {frontmatter.repositoryUrl && frontmatter.repositoryUrl !== "" && (
                 <Box mx={1} fontSize={5}>
                   <SocialLink
-                    name="See project"
-                    icon="globe"
-                    link={frontmatter.projectUrl}
+                    name="Check repository"
+                    icon="github"
+                    link={frontmatter.repositoryUrl}
                   />
                 </Box>
-              </Flex>
-              <ImageSubtitle
-                bg="primary"
-                color="white"
-                y="bottom"
-                x="right"
-                round
-              >
-                {frontmatter.platform.join(", ")}
+              )}
+              <Box mx={1} fontSize={5}>
+                <SocialLink
+                  name="See live project"
+                  icon="globe"
+                  link={frontmatter.projectUrl}
+                />
+              </Box>
+            </Flex>
+            <ImageSubtitle
+              bg="primary"
+              color="white"
+              y="bottom"
+              x="right"
+              round
+            >
+              {frontmatter.platform.join(", ")}
+            </ImageSubtitle>
+            <Hide query={MEDIA_QUERY_SMALL}>
+              <ImageSubtitle bg="backgroundDark">
+                {frontmatter.date}
               </ImageSubtitle>
-              <Hide query={MEDIA_QUERY_SMALL}>
-                <ImageSubtitle bg="backgroundDark">
-                  {frontmatter.date}
-                </ImageSubtitle>
-              </Hide>
-            </ProjectTag>
-          </ImageContainer>
-        </Flex>
-      </Card>
-    </Link>
+            </Hide>
+          </ProjectTag>
+        </ImageContainer>
+      </Flex>
+    </Card>
   )
 }
-// title,
-// description,
-// projectUrl,
-// repositoryUrl,
-// platform,
-// date,
-// featimg,
+
 // Project.propTypes = {
-//   description: PropTypes.string.isRequired,
-//   projectUrl: PropTypes.string.isRequired,
-//   repositoryUrl: PropTypes.string.isRequired,
-//   platform: PropTypes.array.isRequired,
-//   date: PropTypes.string.isRequired,
-//   featimg: PropTypes.isRequired,
+//   frontmatter: {
+//     description: PropTypes.string.isRequired,
+//     projectUrl: PropTypes.string.isRequired,
+//     repositoryUrl: PropTypes.string.isRequired,
+//     platform: PropTypes.array.isRequired,
+//     date: PropTypes.string.isRequired,
+//     featimg: {
+//       publicURL: PropTypes.string.isRequired,
+//     },
+//   },
 // }
 
 const Projects = () => (
@@ -213,6 +197,7 @@ const Projects = () => (
                 description
                 date(formatString: "YYYY")
                 repositoryUrl
+                projectUrl
                 title
                 featimg {
                   publicURL
@@ -236,23 +221,3 @@ const Projects = () => (
 )
 
 export default Projects
-
-// query OLDProjectsQuery {
-//   contentfulAbout {
-//     projects {
-//       id
-//       name
-//       description
-//       projectUrl
-//       repositoryUrl
-//       publishedDate(formatString: "YYYY")
-//       type
-//       logo {
-//         title
-//         image: resize(width: 200, quality: 100) {
-//           src
-//         }
-//       }
-//     }
-//   }
-// }

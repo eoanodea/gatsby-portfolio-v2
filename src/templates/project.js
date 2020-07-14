@@ -6,6 +6,8 @@ import _ from "lodash"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import style from "./project.module.css"
+import ReactMarkdown from "react-markdown"
+import markdownRenderer from "../components/MarkdownRenderer"
 
 export default ({ data }) => {
   const project = data.markdownRemark
@@ -31,9 +33,7 @@ export default ({ data }) => {
 
         <h1 className={style.project__title}>{project.frontmatter.title}</h1>
 
-        <div className={style.project__meta}>
-          {new Date(project.frontmatter.date)}
-        </div>
+        <div className={style.project__meta}>{project.frontmatter.date}</div>
         <div className={style.project__tax}>
           Filed under:{" "}
           {project.frontmatter.tools.map((subject, index) => [
@@ -43,10 +43,14 @@ export default ({ data }) => {
             </Link>,
           ])}
         </div>
-        <div
+        {/* <div
           className={style.project__content}
           // See https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
           dangerouslySetInnerHTML={{ __html: project.html }}
+        /> */}
+        <ReactMarkdown
+          source={project.rawMarkdownBody}
+          renderers={markdownRenderer}
         />
       </project>
     </Layout>
@@ -56,20 +60,25 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
+      rawMarkdownBody
       fields {
         slug
       }
       frontmatter {
-        name
         platform
         description
-        date(locale: "YYYY MMMM DD")
+        date(formatString: "YYYY MM DD")
         repositoryUrl
+        projectUrl
+        tools
         title
         featimg {
           publicURL
+          childImageSharp {
+            fluid(maxWidth: 1360) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

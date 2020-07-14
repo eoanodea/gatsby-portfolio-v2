@@ -54,26 +54,19 @@ const ProjectIndex = ({ data, pageContext }) => {
                 </Link>
 
                 <div className={style.project__meta}>
-                  by {node.frontmatter.author}. Published{" "}
-                  {new Date(node.frontmatter.date).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}{" "}
+                  Published {node.frontmatter.date}
                 </div>
                 <div className={style.project__tax}>
                   Filed under:{" "}
-                  {node.frontmatter.subject.map((subject, index) => [
+                  {node.frontmatter.tools.map((subject, index) => [
                     index > 0 && ", ",
                     <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
                       {subject}
                     </Link>,
                   ])}
                 </div>
-                <div
-                  className={style.project__content}
-                  dangerouslySetInnerHTML={{ __html: node.excerpt }}
-                />
+
+                <p>{node.frontmatter.description}</p>
               </ConditionalWrapper>
             </li>
           ))}
@@ -90,19 +83,21 @@ export const query = graphql`
   query($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { slug: { ne: "/projects/" } } }
       skip: $skip
       limit: $limit
     ) {
       edges {
         node {
-          excerpt
           id
           frontmatter {
             platform
             description
-            date(locale: "YYYY MMMM DD")
+            date(formatString: "YYYY")
             repositoryUrl
+            projectUrl
             title
+            tools
             featimg {
               childImageSharp {
                 fixed(width: 400, height: 400, cropFocus: ATTENTION) {
