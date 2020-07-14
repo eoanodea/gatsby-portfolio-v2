@@ -38,7 +38,7 @@ export default ({ data }) => {
           Filed under:{" "}
           {project.frontmatter.tools.map((subject, index) => [
             index > 0 && ", ",
-            <Link key={index} to={`/subjects/${_.kebabCase(subject)}`}>
+            <Link key={index} to={`/tools/${_.kebabCase(subject)}`}>
               {subject}
             </Link>,
           ])}

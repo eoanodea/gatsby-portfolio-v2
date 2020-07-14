@@ -1,5 +1,4 @@
 import React from "react"
-// import PropTypes from "prop-types"
 import { Image, Text, Flex, Box, Heading } from "rebass/styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
@@ -98,7 +97,7 @@ const ProjectTag = styled.div`
 
 const Project = ({ fields, frontmatter }) => {
   return (
-    <Card p={0}>
+    <Card p={0} m={1}>
       <Flex style={{ height: CARD_HEIGHT }}>
         <TextContainer>
           <Link to={fields.slug}>
@@ -107,7 +106,7 @@ const Project = ({ fields, frontmatter }) => {
               color="secondaryDark"
               mb={4}
             >
-              <LinkAnimated alt selected>
+              <LinkAnimated alt selected onClick={() => {}}>
                 {frontmatter.title}
               </LinkAnimated>
             </Heading>
@@ -119,7 +118,7 @@ const Project = ({ fields, frontmatter }) => {
 
         <ImageContainer>
           <ProjectImage
-            src={frontmatter.featimg.publicURL}
+            src={frontmatter.logo.publicURL}
             alt={frontmatter.title}
           />
           <ProjectTag>
@@ -166,19 +165,6 @@ const Project = ({ fields, frontmatter }) => {
   )
 }
 
-// Project.propTypes = {
-//   frontmatter: {
-//     description: PropTypes.string.isRequired,
-//     projectUrl: PropTypes.string.isRequired,
-//     repositoryUrl: PropTypes.string.isRequired,
-//     platform: PropTypes.array.isRequired,
-//     date: PropTypes.string.isRequired,
-//     featimg: {
-//       publicURL: PropTypes.string.isRequired,
-//     },
-//   },
-// }
-
 const Projects = () => (
   <Section.Container id="projects" Background={Background}>
     <Section.Header name="Projects" label="notebook" />
@@ -199,7 +185,7 @@ const Projects = () => (
                 repositoryUrl
                 projectUrl
                 title
-                featimg {
+                logo {
                   publicURL
                 }
               }

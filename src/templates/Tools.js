@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import Fade from "react-reveal/Fade"
-
-import { Heading, Text } from "rebass/styled-components"
-
 import styled from "styled-components"
 import Triangle from "../components/Triangle"
+import LinkAnimated from "../components/LinkAnimated"
+import { Heading, Text } from "rebass/styled-components"
+
+import Fade from "react-reveal/Fade"
 import { CardContainer, Card } from "../components/Card"
 import Section from "../components/Section"
 import ImageSubtitle from "../components/ImageSubtitle"
@@ -14,30 +14,27 @@ import ImageSubtitle from "../components/ImageSubtitle"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Pagination from "../components/Pagination"
-import LinkAnimated from "../components/LinkAnimated"
 
 const Background = () => (
   <div>
     <Triangle
-      color="backgroundDark"
-      height={["15vh", "10vh"]}
-      width={["100vw", "100vw"]}
-      invertX
-    />
-
-    <Triangle
-      color="secondary"
-      height={["50vh", "40vh"]}
-      width={["70vw", "40vw"]}
+      color="secondaryLight"
+      height={["50vh", "20vh"]}
+      width={["50vw", "50vw"]}
       invertY
     />
 
     <Triangle
       color="primaryDark"
-      height={["40vh", "15vh"]}
-      width={["100vw", "100vw"]}
+      height={["20vh", "40vh"]}
+      width={["75vw", "70vw"]}
       invertX
-      invertY
+    />
+
+    <Triangle
+      color="backgroundDark"
+      height={["25vh", "20vh"]}
+      width={["100vw", "100vw"]}
     />
   </div>
 )
@@ -82,19 +79,26 @@ const Post = ({ fields, frontmatter }) => (
 
 const ProjectIndex = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
+  const { tools } = pageContext
+  console.log(pageContext)
+
+  let pageHeader = `Projects`
+  if (tools) {
+    pageHeader = `Built with ${tools}`
+  }
 
   return (
     <Layout>
       <SEO
-        title="Projects"
-        description="All projects I have worked on"
+        title={`All projects built using ${tools}`}
+        description={`All projects built using this ${tools}.`}
         image="/logo.png"
-        pathname="/projects"
+        pathname={`/tools/${tools}`}
         // Boolean indicating whether this is an project:
         // project
       />
-      <Section.Container id="projects" Background={Background}>
-        <Section.Header name="Projects" label="projects" />
+      <Section.Container id={pageHeader} Background={Background}>
+        <Section.Header name={pageHeader} label={pageHeader} />
         <CardContainer minWidth="300px">
           {posts.map(({ node }, i) => (
             <Fade bottom key={i}>
@@ -111,15 +115,20 @@ const ProjectIndex = ({ data, pageContext }) => {
 export default ProjectIndex
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query($tools: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
+      filter: {
+        frontmatter: { tools: { in: [$tools] } }
+        fields: { slug: { ne: "/projects/" } }
+      }
+
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { slug: { ne: "/projects/" } } }
       skip: $skip
       limit: $limit
     ) {
       edges {
         node {
+          excerpt
           id
           frontmatter {
             platform

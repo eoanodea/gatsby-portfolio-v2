@@ -8,7 +8,7 @@ const LinkAnimated = styled.span`
   color: inherit;
   ${props =>
     props.selected &&
-    `border-bottom:  5px solid ${
+    `border-bottom: 5px solid ${
       props.alt
         ? props.theme.colors.background
         : props.theme.colors.primaryLight

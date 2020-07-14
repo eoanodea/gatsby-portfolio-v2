@@ -5,6 +5,7 @@ description: Competitive party game hybrid application
 tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
 platform: ["web", "iOS", "Android"]
 featimg: getting-creative-with-3-d-printers-1184x360.jpg
+logo: icon.png
 repositoryUrl: https://github.com/drinking-game-app/frontend
 projectUrl: https://shcoop.wspace.ie
 ---
