@@ -14,21 +14,21 @@ import ImageSubtitle from "../components/ImageSubtitle"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Pagination from "../components/Pagination"
-import LinkAnimated from "../components/LinkAnimated"
+
+import SubPageLanding from "../sections/SubPageLanding"
 
 const Background = () => (
   <div>
     <Triangle
-      color="backgroundDark"
-      height={["15vh", "10vh"]}
+      color="secondary"
+      height={["20vh", "20vh"]}
       width={["100vw", "100vw"]}
-      invertX
     />
 
     <Triangle
-      color="secondary"
+      color="backgroundDark"
       height={["50vh", "40vh"]}
-      width={["70vw", "40vw"]}
+      width={["70vw", "80vw"]}
       invertY
     />
 
@@ -56,9 +56,7 @@ const Post = ({ fields, frontmatter }) => (
         m={3}
         mb={4}
       >
-        <LinkAnimated alt selected onClick={() => {}}>
-          {frontmatter.title}.
-        </LinkAnimated>
+        {frontmatter.title}.
       </Heading>
       <ImageSubtitle bg="backgroundDark" x="right" y="top" round>
         {frontmatter.platform.join(", ")}
@@ -71,7 +69,7 @@ const Post = ({ fields, frontmatter }) => (
         />
       )}
       <Text m={3} color="text">
-        {frontmatter.description}
+        {frontmatter.description}.
       </Text>
       <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
         {frontmatter.date}
@@ -80,9 +78,15 @@ const Post = ({ fields, frontmatter }) => (
   </Link>
 )
 
-const ProjectIndex = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
+const getToolsArrFromQuery = tools => {
+  let result = []
+  tools.map(dat => result.push(dat.fieldValue))
+  return result
+}
 
+const ProjectIndex = ({ data, pageContext }) => {
+  const posts = data.postsResult.edges
+  const tools = getToolsArrFromQuery(data.toolsResult.group)
   return (
     <Layout>
       <SEO
@@ -93,8 +97,8 @@ const ProjectIndex = ({ data, pageContext }) => {
         // Boolean indicating whether this is an project:
         // project
       />
+      <SubPageLanding name="Projects" scrollTo="projects" loop={tools} />
       <Section.Container id="projects" Background={Background}>
-        <Section.Header name="Projects" label="projects" />
         <CardContainer minWidth="300px">
           {posts.map(({ node }, i) => (
             <Fade bottom key={i}>
@@ -111,8 +115,8 @@ const ProjectIndex = ({ data, pageContext }) => {
 export default ProjectIndex
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+  query getAllToolsAndGetProjects($skip: Int!, $limit: Int!) {
+    postsResult: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { slug: { ne: "/projects/" } } }
       skip: $skip
@@ -136,6 +140,12 @@ export const query = graphql`
             slug
           }
         }
+      }
+    }
+
+    toolsResult: allMarkdownRemark {
+      group(field: frontmatter___tools) {
+        fieldValue
       }
     }
   }

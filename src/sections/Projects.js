@@ -9,7 +9,6 @@ import SocialLink from "../components/SocialLink"
 import Triangle from "../components/Triangle"
 import ImageSubtitle from "../components/ImageSubtitle"
 import Hide from "../components/Hide"
-import LinkAnimated from "../components/LinkAnimated"
 
 const Background = () => (
   <div>
@@ -72,7 +71,7 @@ const ImageContainer = styled.div`
 const ProjectImage = styled(Image)`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
-  padding: 40px;
+  padding: 20px;
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
@@ -104,14 +103,13 @@ const Project = ({ fields, frontmatter }) => {
             <Heading
               style={{ fontSize: "1.5em", fontWeight: 500 }}
               color="secondaryDark"
+              m={1}
               mb={4}
             >
-              <LinkAnimated alt selected onClick={() => {}}>
-                {frontmatter.title}
-              </LinkAnimated>
+              {frontmatter.title}.
             </Heading>
-            <Text width={[1]} style={{ overflow: "auto" }} color="text">
-              {frontmatter.description}
+            <Text m={1} width={[1]} style={{ overflow: "auto" }} color="text">
+              {frontmatter.description}.
             </Text>
           </Link>
         </TextContainer>
@@ -172,6 +170,7 @@ const Projects = () => (
       query={graphql`
         query ProjectsQuery {
           allMarkdownRemark(
+            limit: 3
             filter: { fields: { slug: { ne: "/projects/" } } }
           ) {
             nodes {

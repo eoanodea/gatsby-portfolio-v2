@@ -22,7 +22,7 @@ const Header = ({ menuLinks }) => {
   const homeLink = (
     <Link to="/">
       <Image
-        src="/logo.png"
+        src="/icon.png"
         width="60"
         alt="Portfolio Logo"
         style={{

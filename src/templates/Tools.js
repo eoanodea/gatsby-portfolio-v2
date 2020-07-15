@@ -3,7 +3,6 @@ import { graphql, Link } from "gatsby"
 
 import styled from "styled-components"
 import Triangle from "../components/Triangle"
-import LinkAnimated from "../components/LinkAnimated"
 import { Heading, Text } from "rebass/styled-components"
 
 import Fade from "react-reveal/Fade"
@@ -14,6 +13,7 @@ import ImageSubtitle from "../components/ImageSubtitle"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Pagination from "../components/Pagination"
+import SubLandingPage from "../sections/SubPageLanding"
 
 const Background = () => (
   <div>
@@ -32,7 +32,7 @@ const Background = () => (
     />
 
     <Triangle
-      color="backgroundDark"
+      color="secondary"
       height={["25vh", "20vh"]}
       width={["100vw", "100vw"]}
     />
@@ -53,9 +53,7 @@ const Post = ({ fields, frontmatter }) => (
         m={3}
         mb={4}
       >
-        <LinkAnimated alt selected onClick={() => {}}>
-          {frontmatter.title}.
-        </LinkAnimated>
+        {frontmatter.title}.
       </Heading>
       <ImageSubtitle bg="backgroundDark" x="right" y="top" round>
         {frontmatter.platform.join(", ")}
@@ -77,8 +75,16 @@ const Post = ({ fields, frontmatter }) => (
   </Link>
 )
 
+const getToolsArrFromQuery = tools => {
+  let result = []
+  tools.map(dat => result.push(dat.fieldValue))
+  return result
+}
+
 const ProjectIndex = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.postsResult.edges
+  const allTools = getToolsArrFromQuery(data.toolsResult.group)
+
   const { tools } = pageContext
   console.log(pageContext)
 
@@ -91,14 +97,14 @@ const ProjectIndex = ({ data, pageContext }) => {
     <Layout>
       <SEO
         title={`All projects built using ${tools}`}
-        description={`All projects built using this ${tools}.`}
+        description={`All projects built using ${tools}.`}
         image="/logo.png"
         pathname={`/tools/${tools}`}
         // Boolean indicating whether this is an project:
         // project
       />
+      <SubLandingPage name={pageHeader} scrollTo={pageHeader} loop={allTools} />
       <Section.Container id={pageHeader} Background={Background}>
-        <Section.Header name={pageHeader} label={pageHeader} />
         <CardContainer minWidth="300px">
           {posts.map(({ node }, i) => (
             <Fade bottom key={i}>
@@ -116,7 +122,7 @@ export default ProjectIndex
 
 export const query = graphql`
   query($tools: String!, $skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    postsResult: allMarkdownRemark(
       filter: {
         frontmatter: { tools: { in: [$tools] } }
         fields: { slug: { ne: "/projects/" } }
@@ -145,6 +151,11 @@ export const query = graphql`
             slug
           }
         }
+      }
+    }
+    toolsResult: allMarkdownRemark {
+      group(field: frontmatter___tools) {
+        fieldValue
       }
     }
   }
