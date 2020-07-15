@@ -42,12 +42,12 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
         <Section.Header name={name} label={name} />
         {loop.length > 0 && (
           <Fade>
-            <TextLoop interval={40000}>
+            <TextLoop interval={4000}>
               {loop.map(text => (
                 <Box p={2} pl={3} pr={3} style={{ backgroundColor: "#000" }}>
                   <RouteLink
                     key={text}
-                    link={`/tools/${_.kebabCase(text)}#projects`}
+                    link={`/tools/${_.kebabCase(text)}`}
                     selected={false}
                     name={text}
                     disableMargin={true}
@@ -60,12 +60,16 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
 
         <SectionLink section={scrollTo}>
           {({ onClick }) => {
-            if (window.location.hash === "#projects") {
-              window.location.hash = ""
-              setTimeout(() => {
-                onClick()
-              }, 1000)
-            }
+            // console.log("scroll")
+            // if (window.location.href.includes("#content")) {
+            //   window.location.href = window.location.href.replace(
+            //     "#content",
+            //     ""
+            //   )
+            //   setTimeout(() => {
+            //     onClick()
+            //   }, 2000)
+            // }
 
             return <MouseIcon onClick={onClick} />
           }}

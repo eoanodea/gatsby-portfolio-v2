@@ -103,8 +103,8 @@ const ProjectIndex = ({ data, pageContext }) => {
         // Boolean indicating whether this is an project:
         // project
       />
-      <SubLandingPage name={pageHeader} scrollTo={pageHeader} loop={allTools} />
-      <Section.Container id={pageHeader} Background={Background}>
+      <SubLandingPage name={pageHeader} scrollTo="projects" loop={allTools} />
+      <Section.Container id="projects" Background={Background}>
         <CardContainer minWidth="300px">
           {posts.map(({ node }, i) => (
             <Fade bottom key={i}>

@@ -96,6 +96,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     {
       postQuery: allMarkdownRemark(
         sort: { order: ASC, fields: [frontmatter___date] }
+        filter: { fields: { slug: { ne: "/projects/" } } }
       ) {
         edges {
           node {

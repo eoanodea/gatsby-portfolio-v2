@@ -3,8 +3,8 @@ title: About
 name: Eoan
 roles:
   [
-    "Full Stack Web Developer 💻",
-    "Mobile App Developer 📱",
+    "Full Stack 💻",
+    "Mobile Apps 📱",
     "Designer 🎨",
     "Entrepreneur 📈",
     "DevOps Engineer 🛠",
