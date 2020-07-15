@@ -49,7 +49,7 @@ const Footer = ({ siteTitle }) => (
       <Flex>
         <Fade right>
           <TextFooter fontSize={[2, 3]}>
-            © {new Date().getFullYear()} {siteTitle}
+            © Eoan O'Dea {new Date().getFullYear()} {siteTitle}
           </TextFooter>
         </Fade>
       </Flex>

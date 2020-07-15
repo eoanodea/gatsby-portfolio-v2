@@ -28,7 +28,7 @@ socialLinks:
 
 I help people grow their businesses, and build cool stuff.
 
-I've worked as a Freelance Web Developer for over 4 years, and during this time have completed over 25 successful projects, and pleased many clients.
+I've worked as a Freelance Web Developer for over 4 years, and during this time have completed over 25 successful projects.
 
 I'm based mainly on the web, but I also dabble in other cool stuff, and am always open to learning new things.
 

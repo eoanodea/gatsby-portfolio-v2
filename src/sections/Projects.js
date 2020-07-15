@@ -180,7 +180,7 @@ const Projects = () => (
               frontmatter {
                 platform
                 description
-                date(formatString: "YYYY")
+                date(formatString: "MM / YYYY")
                 repositoryUrl
                 projectUrl
                 title

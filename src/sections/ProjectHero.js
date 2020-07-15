@@ -55,7 +55,7 @@ const StyledHeroHeading = styled(Heading)`
   bottom: 30px;
 `
 
-const ProjectHero = ({ name, loop = [], scrollTo, imgSrc }) => {
+const ProjectHero = ({ name, scrollTo, imgSrc }) => {
   return (
     <Section.Container id="hero" Background={() => Background(imgSrc)}>
       <SectionLink section={scrollTo}>

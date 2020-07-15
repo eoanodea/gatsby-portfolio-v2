@@ -55,7 +55,7 @@ const Post = ({ fields, frontmatter }) => (
       >
         {frontmatter.title}.
       </Heading>
-      <ImageSubtitle bg="backgroundDark" x="right" y="top" round>
+      <ImageSubtitle bg="backgroundDark" color="text" x="right" y="top" round>
         {frontmatter.platform.join(", ")}
       </ImageSubtitle>
       {frontmatter.featimg && (

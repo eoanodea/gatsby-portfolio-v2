@@ -4,6 +4,15 @@ date: 2020-07-08
 description: Competitive party game hybrid application
 tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
 platform: ["web", "iOS", "Android"]
+platforms:
+  [
+    { name: "Web", link: "https://shcoop.wspace.ie" },
+    { name: "iOS" },
+    {
+      name: "Android",
+      link: "https://play.google.com/store/apps/details?id=ie.wspace.drinkingapp&hl=en_GB",
+    },
+  ]
 featimg: banner.png
 logo: icon.png
 repositoryUrl: https://github.com/drinking-game-app/frontend

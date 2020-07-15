@@ -12,9 +12,9 @@ import _ from "lodash"
 const Background = () => (
   <div>
     <Triangle
-      color="text"
+      color="primary"
       height={["20vh", "125vh"]}
-      width={["100vw", "400vw"]}
+      width={["100vw", "100vw"]}
       invertX
     />
 
@@ -39,7 +39,14 @@ const StyledToolText = styled(Text)`
 const ProjectTools = ({ tools, scrollTo }) => {
   return (
     <Section.Container id="tools" Background={Background}>
-      <div style={{ textAlign: "center", backgroundColor: "#000" }}>
+      <div
+        style={{
+          textAlign: "center",
+          backgroundColor: "#000",
+          padding: 12,
+          borderRadius: 12,
+        }}
+      >
         <Fade>
           <StyledToolHeading color="white">Built with:</StyledToolHeading>
         </Fade>

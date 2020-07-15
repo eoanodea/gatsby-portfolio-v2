@@ -36,6 +36,7 @@ const StyledLink = styled.a`
 
 const MarkdownParagraph = styled.p`
   line-height: 2em;
+  font-size: 1.3em;
   &:first-child {
     margin-top: 0em;
   }
@@ -43,6 +44,10 @@ const MarkdownParagraph = styled.p`
 
 const MarkdownHeading = styled.h2`
   font-family: inherit;
+  border-bottom: 5px solid #fa26a0;
+  font-size: 2.5em;
+  font-weight: 600;
+  max-width: fit-content;
 `
 
 const MarkdownList = styled.ul`

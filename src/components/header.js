@@ -14,6 +14,8 @@ const HeaderContainer = styled(Headroom)`
     background-color: ${props => props.theme.colors.primaryDark};
   }
 
+  transition: 0.2s ease;
+  z-index: 20;
   position: absolute;
   width: 100%;
 `
