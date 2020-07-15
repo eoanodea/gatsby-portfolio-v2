@@ -22,11 +22,6 @@ const StyledBackgroundImage = styled(BackgroundImage)`
 
 const Background = imgSrc => (
   <StyledBackgroundImage fluid={imgSrc}>
-    {/* <Triangle
-      color="background"
-      height={["20vh", "30vh"]}
-      width={["100vw", "130vw"]}
-    /> */}
     <Triangle
       color="primaryDark"
       height={["20vh", "20vh"]}
@@ -45,7 +40,7 @@ const Background = imgSrc => (
     <Triangle
       color="text"
       height={["40vh", "35vh"]}
-      width={["100vw", "80vw"]}
+      width={["100vw", "100vw"]}
       invertY
     />
   </StyledBackgroundImage>
