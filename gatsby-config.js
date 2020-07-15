@@ -15,7 +15,6 @@ module.exports = {
     description: `Some description`,
     url: `https://something.or.other`,
     logo: `/logo.png`,
-    twitter: `no twitter here`,
     menuLinks: [
       {
         name: `Home`,
@@ -24,10 +23,6 @@ module.exports = {
       {
         name: `Projects`,
         link: `/projects`,
-      },
-      {
-        name: `About`,
-        link: `/about`,
       },
     ],
   },
