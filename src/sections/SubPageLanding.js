@@ -60,17 +60,6 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
 
         <SectionLink section={scrollTo}>
           {({ onClick }) => {
-            // console.log("scroll")
-            // if (window.location.href.includes("#content")) {
-            //   window.location.href = window.location.href.replace(
-            //     "#content",
-            //     ""
-            //   )
-            //   setTimeout(() => {
-            //     onClick()
-            //   }, 2000)
-            // }
-
             return <MouseIcon onClick={onClick} />
           }}
         </SectionLink>
