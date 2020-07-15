@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
 import { Box } from "rebass/styled-components"
-import TextLoop from "react-text-loop"
 import { SectionLink } from "react-scroll-section"
 import Section from "../components/Section"
 import MouseIcon from "../components/MouseIcon"
@@ -41,10 +40,16 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
       <Fragment>
         <Section.Header name={name} label={name} />
         {loop.length > 0 && (
-          <Fade>
-            <TextLoop interval={4000}>
+          <Fade top cascade>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
               {loop.map(text => (
-                <Box p={2} pl={3} pr={3} style={{ backgroundColor: "#000" }}>
+                <Box
+                  p={2}
+                  pl={3}
+                  pr={3}
+                  m={1}
+                  style={{ backgroundColor: "#000" }}
+                >
                   <RouteLink
                     key={text}
                     link={`/tools/${_.kebabCase(text)}`}
@@ -54,7 +59,7 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
                   />
                 </Box>
               ))}
-            </TextLoop>
+            </div>
           </Fade>
         )}
 

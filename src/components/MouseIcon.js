@@ -15,10 +15,6 @@ const ScrollLink = styled.span`
   transform: translateX(-50%);
   cursor: pointer;
   z-index: 10;
-
-  @media only screen and (max-width: 700px) {
-    display: none;
-  }
 `
 
 const ScrollAnimation = keyframes`

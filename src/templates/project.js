@@ -193,7 +193,7 @@ export const query = graphql`
         featimg {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 1360) {
+            fluid(maxWidth: 2880) {
               ...GatsbyImageSharpFluid
             }
           }
