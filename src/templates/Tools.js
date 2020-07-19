@@ -99,7 +99,7 @@ const ProjectIndex = ({ data, pageContext }) => {
         title={`All projects built using ${tools}`}
         description={`All projects built using ${tools}.`}
         image="/logo.png"
-        pathname={`/tools/${tools}`}
+        pathname={`/projects/tools/${tools}`}
         // Boolean indicating whether this is an project:
         // project
       />

@@ -8,6 +8,7 @@
     "@rebass/preset": "^4.0.5",
     "@tippy.js/react": "^3.1.1",
     "babel-plugin-styled-components": "^1.10.7",
+    "framer-motion": "^2.1.0",
     "gatsby": "^2.24.2",
     "gatsby-awesome-pagination": "^0.3.6",
     "gatsby-background-image": "^1.1.1",

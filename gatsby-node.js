@@ -150,7 +150,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       createPage, // The Gatsby `createPage` function
       items: nodes, // An array of objects
       itemsPerPage: 2, // How many items you want per page
-      pathPrefix: `/tools/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
+      pathPrefix: `/projects/tools/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
       component: path.resolve(`./src/templates/Tools.js`), // Just like `createPage()`
       context: { tools: fieldValue },
     })

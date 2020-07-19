@@ -11,7 +11,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: absolute !important;
   top: 0;
   bottom: 0;
@@ -31,7 +31,7 @@ const Background = imgSrc => (
 
     <Triangle
       color="secondary"
-      height={["90vh", "30vh"]}
+      height={["40vh", "30vh"]}
       width={["70vw", "90vw"]}
       invertX
       invertY

@@ -35,6 +35,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.3em;
     font-weight: 400
   }
+  .menu-background {
+    background: ${props => props.theme.colors.primaryDark};
+    padding: 10px;
+  }
 `
 
 config({ ssrFadeout: true })

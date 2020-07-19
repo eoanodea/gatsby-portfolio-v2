@@ -24,7 +24,7 @@ const LinkAnimated = styled.span`
     bottom: -5px;
     background: ${props =>
       props.alt
-        ? props.theme.colors.primaryLight
+        ? props.theme.colors.secondaryLight
         : props.theme.colors.secondaryLight};
     height: 5px;
     transition-property: width;

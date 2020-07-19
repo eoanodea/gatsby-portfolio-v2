@@ -42,17 +42,18 @@ const SubLandingPage = ({ name, loop = [], scrollTo }) => {
         {loop.length > 0 && (
           <Fade top cascade>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
-              {loop.map(text => (
+              {loop.map((text, i) => (
                 <Box
                   p={2}
                   pl={3}
                   pr={3}
                   m={1}
+                  key={i}
                   style={{ backgroundColor: "#000" }}
                 >
                   <RouteLink
                     key={text}
-                    link={`/tools/${_.kebabCase(text)}`}
+                    link={`/projects/tools/${_.kebabCase(text)}`}
                     selected={false}
                     name={text}
                     disableMargin={true}

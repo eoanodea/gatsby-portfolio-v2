@@ -12,15 +12,24 @@ import Tippy from "@tippy.js/react"
 const Background = () => (
   <div>
     <Triangle
-      color="primary"
-      height={["20vh", "125vh"]}
-      width={["100vw", "100vw"]}
+      color="backgroundDark"
+      height={["20vh", "20vh"]}
+      width={["100vw", "80vw"]}
+      invertY
+      invertX
     />
 
     <Triangle
       color="text"
+      height={["50vh", "125vh"]}
+      width={["150vw", "100vw"]}
+      invertX
+    />
+    <Triangle
+      color="text"
       height={["20vh", "125vh"]}
-      width={["100vw", "100vw"]}
+      width={["150vw", "100vw"]}
+      invertY
     />
   </div>
 )
@@ -51,15 +60,13 @@ const ProjectStats = ({ platforms, scrollTo, repoUrl = "" }) => {
         <Flip top cascade>
           <div>
             {platforms.map((dat, i) => {
-              console.log(platforms)
               if (dat.link) {
                 return (
-                  <StyledToolText color="background" mb={2}>
+                  <StyledToolText color="background" mb={2} key={i}>
                     <a
                       href={dat.link}
                       style={{ color: "#05dfd7" }}
                       target="__blank"
-                      key={i}
                     >
                       <LinkAnimated selected={false} onClick={() => {}}>
                         {dat.name}

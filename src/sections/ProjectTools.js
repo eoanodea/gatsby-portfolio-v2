@@ -12,16 +12,16 @@ import _ from "lodash"
 const Background = () => (
   <div>
     <Triangle
-      color="primary"
-      height={["20vh", "125vh"]}
-      width={["100vw", "100vw"]}
+      color="text"
+      height={["50vh", "125vh"]}
+      width={["150vw", "100vw"]}
       invertX
     />
 
     <Triangle
       color="text"
-      height={["20vh", "125vh"]}
-      width={["100vw", "100vw"]}
+      height={["50vh", "125vh"]}
+      width={["150vw", "100vw"]}
       invertY
     />
   </div>
@@ -56,7 +56,7 @@ const ProjectTools = ({ tools, scrollTo }) => {
               return (
                 <StyledToolText color="white" mb={2} key={i}>
                   <RouteLink
-                    link={`/tools/${_.kebabCase(dat)}`}
+                    link={`/projects/tools/${_.kebabCase(dat)}`}
                     name={dat}
                     selected={false}
                   />
