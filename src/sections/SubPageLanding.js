@@ -11,14 +11,14 @@ import RouteLink from "../components/RouteLink"
 const Background = () => (
   <div>
     <Triangle
-      color="text"
+      color="primaryDark"
       height={["15vh", "20vh"]}
       width={["100vw", "100vw"]}
       invertX
     />
 
     <Triangle
-      color="primaryDark"
+      color="text"
       height={["50vh", "40vh"]}
       width={["70vw", "40vw"]}
       invertY

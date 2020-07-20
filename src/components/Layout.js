@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
 import PropTypes from "prop-types"
@@ -9,6 +9,7 @@ import preset from "@rebass/preset"
 import colors from "../../colors"
 import Footer from "./Footer"
 import Header from "./Header"
+import { motion, AnimatePresence } from "framer-motion"
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -61,7 +62,36 @@ const theme = {
   },
 }
 
-const Layout = ({ children }) => {
+const duration = 0.5
+
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    filter: "blur(0)",
+    transition: {
+      duration,
+      delay: duration,
+      when: "beforeChildren",
+    },
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(1rem)",
+    transition: { duration },
+  },
+}
+
+const Main = styled(motion.main).attrs(() => ({
+  initial: "initial",
+  variants,
+}))`
+  /* flex-grow: 1; */
+`
+
+const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -82,16 +112,26 @@ const Layout = ({ children }) => {
   }, [])
 
   return (
-    <main>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <>
         <GlobalStyle />
         <ScrollingProvider>
           <Header menuLinks={data.site.siteMetadata.menuLinks} />
-          {children}
+          <AnimatePresence>
+            <Main
+              key={location?.pathname}
+              variants={variants}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+            >
+              {children}
+            </Main>
+          </AnimatePresence>
           <Footer />
         </ScrollingProvider>
-      </ThemeProvider>
-    </main>
+      </>
+    </ThemeProvider>
   )
 }
 

@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { motion } from "framer-motion"
+import LinkAnimated from "./LinkAnimated"
 
 const variants = {
   open: {
@@ -22,17 +23,22 @@ const variants = {
   },
 }
 
-export const MenuItem = ({ item: { name, link }, toggle }) => (
-  <Item
-    variants={variants}
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <StyledLink to={link} onClick={toggle}>
-      {name}
-    </StyledLink>
-  </Item>
-)
+export const MenuItem = ({ item: { name, link }, toggle }) => {
+  const isSelected =
+    typeof window !== "undefined" ? link === window.location.pathname : false
+
+  return (
+    <Item
+      variants={variants}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <LinkAnimated alt="true" selected={isSelected} onClick={toggle}>
+        <StyledLink to={link}>{name}</StyledLink>
+      </LinkAnimated>
+    </Item>
+  )
+}
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.background};

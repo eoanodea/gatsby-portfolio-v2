@@ -1,8 +1,11 @@
 import React from "react"
-import { Heading, Box } from "rebass/styled-components"
+import { Heading, Box, Text } from "rebass/styled-components"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
 import Triangle from "../components/Triangle"
+import LinkAnimated from "../components/LinkAnimated"
+import { Link } from "gatsby"
+import styled from "styled-components"
 
 const Background = () => (
   <div>
@@ -13,7 +16,7 @@ const Background = () => (
     />
 
     <Triangle
-      color="primary"
+      color="primaryDark"
       height={["25vh", "35vh"]}
       width={["75vw", "60vw"]}
       invertX
@@ -29,20 +32,26 @@ const Background = () => (
   </div>
 )
 
+const LinkText = styled(Text)`
+  color: ${props => props.theme.colors.primaryLight};
+  margin: 20px;
+`
+
 const NotFoundPage = () => (
   <Layout>
     <Section.Container id="404" Background={Background}>
       <Box width={[320, 400, 600]} m="auto">
-        <Heading
-          color="primaryDark"
-          fontSize={["8rem", "12rem", "14rem"]}
-          as="h1"
-        >
-          404
+        <Heading color="primary" fontSize={["8rem", "12rem", "14rem"]} as="h1">
+          404.
         </Heading>
-        <Heading color="secondary" fontSize={["4rem", "5rem", "6rem"]} as="h2">
+        <Heading color="text" fontSize={["3rem", "4rem", "5rem"]} as="h2">
           There isn&apos;t anything here
         </Heading>
+        <Link to="/">
+          <LinkText fontSize={["2rem", "3rem"]}>
+            <LinkAnimated onClick={() => {}}>Home</LinkAnimated>
+          </LinkText>
+        </Link>
       </Box>
     </Section.Container>
   </Layout>

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Card as CardRebass } from 'rebass/styled-components';
+import styled from "styled-components"
+import { Card as CardRebass } from "rebass/styled-components"
 
 export const CardContainer = styled.div`
   display: grid;
@@ -7,17 +7,17 @@ export const CardContainer = styled.div`
 
   grid-template-columns: repeat(
     auto-fill,
-    minmax(${(props) => props.minWidth}, 1fr)
+    minmax(${props => props.minWidth}, 1fr)
   );
   justify-items: center;
 
   @media only screen and (max-width: 400px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-`;
+`
 
 export const Card = styled(CardRebass).attrs({
-  bg: 'white',
+  bg: "white",
   boxShadow: 0,
 })`
   position: relative;
@@ -26,11 +26,9 @@ export const Card = styled(CardRebass).attrs({
   top: 0;
   height: 100%;
   border-radius: 8px;
-
   &:hover {
-    top: -10px;
     box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
   }
-`;
+`
 
-export default Card;
+export default Card

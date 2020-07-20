@@ -1,14 +1,14 @@
 import React from "react"
-import { Image, Text, Flex, Box, Heading } from "rebass/styled-components"
+import { Image, Text, Flex, Heading } from "rebass/styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Fade from "react-reveal/Fade"
 import Section from "../components/Section"
 import { CardContainer, Card } from "../components/Card"
-import SocialLink from "../components/SocialLink"
 import Triangle from "../components/Triangle"
 import ImageSubtitle from "../components/ImageSubtitle"
 import Hide from "../components/Hide"
+import { motion } from "framer-motion"
 
 const Background = () => (
   <div>
@@ -96,70 +96,50 @@ const ProjectTag = styled.div`
 
 const Project = ({ fields, frontmatter }) => {
   return (
-    <Card p={0} m={1}>
-      <Flex style={{ height: CARD_HEIGHT }}>
-        <TextContainer>
-          <Link to={fields.slug}>
-            <Heading
-              style={{ fontSize: "1.5em", fontWeight: 500 }}
-              color="secondaryDark"
-              m={1}
-              mb={4}
-            >
-              {frontmatter.title}.
-            </Heading>
-            <Text m={1} width={[1]} style={{ overflow: "auto" }} color="text">
-              {frontmatter.description}.
-            </Text>
-          </Link>
-        </TextContainer>
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      <Card p={0} m={1}>
+        <Link to={fields.slug}>
+          <Flex style={{ height: CARD_HEIGHT }}>
+            <TextContainer>
+              <Heading
+                style={{ fontSize: "1.5em", fontWeight: 500 }}
+                color="secondaryDark"
+                m={1}
+                mb={4}
+              >
+                {frontmatter.title}.
+              </Heading>
+              <Text m={1} width={[1]} style={{ overflow: "auto" }} color="text">
+                {frontmatter.description}.
+              </Text>
+            </TextContainer>
 
-        <ImageContainer>
-          <ProjectImage
-            src={frontmatter.logo.publicURL}
-            alt={frontmatter.title}
-          />
-          <ProjectTag>
-            <Flex
-              style={{
-                float: "right",
-              }}
-            >
-              {frontmatter.repositoryUrl && frontmatter.repositoryUrl !== "" && (
-                <Box mx={1} fontSize={5}>
-                  <SocialLink
-                    name="Check repository"
-                    icon="github"
-                    link={frontmatter.repositoryUrl}
-                  />
-                </Box>
-              )}
-              <Box mx={1} fontSize={5}>
-                <SocialLink
-                  name="See live project"
-                  icon="globe"
-                  link={frontmatter.projectUrl}
-                />
-              </Box>
-            </Flex>
-            <ImageSubtitle
-              bg="primary"
-              color="white"
-              y="bottom"
-              x="right"
-              round
-            >
-              {frontmatter.platform.join(", ")}
-            </ImageSubtitle>
-            <Hide query={MEDIA_QUERY_SMALL}>
-              <ImageSubtitle bg="backgroundDark">
-                {frontmatter.date}
-              </ImageSubtitle>
-            </Hide>
-          </ProjectTag>
-        </ImageContainer>
-      </Flex>
-    </Card>
+            <ImageContainer>
+              <ProjectImage
+                src={frontmatter.logo.publicURL}
+                alt={frontmatter.title}
+              />
+              <ProjectTag>
+                <ImageSubtitle
+                  bg="primary"
+                  color="white"
+                  y="bottom"
+                  x="right"
+                  round
+                >
+                  {frontmatter.platform.join(", ")}
+                </ImageSubtitle>
+                <Hide query={MEDIA_QUERY_SMALL}>
+                  <ImageSubtitle bg="backgroundDark">
+                    {frontmatter.date}
+                  </ImageSubtitle>
+                </Hide>
+              </ProjectTag>
+            </ImageContainer>
+          </Flex>
+        </Link>
+      </Card>
+    </motion.div>
   )
 }
 

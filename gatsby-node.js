@@ -58,12 +58,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: "[String!]",
           resolve(source, args, context, info) {
             const { tools } = source
-            if (
-              source.tools == null ||
-              (Array.isArray(tools) && !tools.length)
-            ) {
-              return ["random"]
-            }
+
             return tools
           },
         },

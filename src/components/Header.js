@@ -61,8 +61,9 @@ const Button = styled.button`
   right: 15px;
   width: 50px;
   height: 50px;
+  padding: 6px 0 0 0;
   border-radius: 50%;
-  background: transparent;
+  background: ${props => props.theme.colors.primaryDark};
 `
 
 const Toggler = styled(motion.nav)`
@@ -86,28 +87,36 @@ const Path = props => (
 
 const MenuToggle = ({ toggle }) => (
   <Button onClick={toggle} data-testid="MenuToggle">
-    <Svg width="23" height="23" viewBox="0 0 23 23">
-      <Path
-        variants={{
-          closed: { d: "M 2 2.5 L 20 2.5" },
-          open: { d: "M 3 16.5 L 17 2.5" },
-        }}
-      />
-      <Path
-        d="M 2 9.423 L 20 9.423"
-        variants={{
-          closed: { opacity: 1 },
-          open: { opacity: 0 },
-        }}
-        transition={{ duration: 0.1 }}
-      />
-      <Path
-        variants={{
-          closed: { d: "M 2 16.346 L 20 16.346" },
-          open: { d: "M 3 2.5 L 17 16.346" },
-        }}
-      />
-    </Svg>
+    <motion.div
+      animate={{
+        scale: [1, 2, 2, 1, 1],
+        rotate: [0, 0, 270, 270, 0],
+        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+      }}
+    >
+      <Svg width="23" height="23" viewBox="0 0 23 23">
+        <Path
+          variants={{
+            closed: { d: "M 2 2.5 L 20 2.5" },
+            open: { d: "M 3 16.5 L 17 2.5" },
+          }}
+        />
+        <Path
+          d="M 2 9.423 L 20 9.423"
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 },
+          }}
+          transition={{ duration: 0.1 }}
+        />
+        <Path
+          variants={{
+            closed: { d: "M 2 16.346 L 20 16.346" },
+            open: { d: "M 3 2.5 L 17 16.346" },
+          }}
+        />
+      </Svg>
+    </motion.div>
   </Button>
 )
 
@@ -139,26 +148,30 @@ const Header = ({ menuLinks }) => {
   const { height } = useDimensions(containerRef)
 
   const homeLink = (
-    <Link to="/">
-      <Image
-        src="/icon.png"
-        width="60"
-        alt="Portfolio Logo"
-        style={{
-          cursor: "pointer",
-        }}
-      />
-    </Link>
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      {!isOpen && window.location.path !== "/" ? (
+        <Image
+          src="/icon.png"
+          width="60"
+          alt="Portfolio Logo"
+          style={{
+            cursor: "pointer",
+          }}
+        />
+      ) : (
+        <Link to="/">
+          <Image
+            src="/icon.png"
+            width="60"
+            alt="Portfolio Logo"
+            style={{
+              cursor: "pointer",
+            }}
+          />
+        </Link>
+      )}
+    </motion.div>
   )
-
-  // const navLinks = menuLinks.map((dat, i) => (
-  //   <RouteLink
-  //     key={i}
-  //     link={dat.link}
-  //     selected={dat.link === window.location.pathname}
-  //     name={dat.name}
-  //   />
-  // ))
 
   return (
     <HeaderContainer>
@@ -168,11 +181,9 @@ const Header = ({ menuLinks }) => {
         alignItems="center"
         p={3}
       >
-        {/* <Fragment> */}
-        <StyledLogoContainer>{homeLink}</StyledLogoContainer>
-
-        {/* <Flex mr={[0, 3, 5]}>{navLinks}</Flex> */}
-        {/* </Fragment> */}
+        <StyledLogoContainer onClick={() => toggleOpen()}>
+          {homeLink}
+        </StyledLogoContainer>
         <Toggler
           initial={false}
           animate={isOpen ? "open" : "closed"}
