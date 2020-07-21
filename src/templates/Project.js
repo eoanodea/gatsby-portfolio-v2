@@ -10,42 +10,31 @@ import ProjectHero from "../sections/ProjectHero"
 import ProjectTools from "../sections/ProjectTools"
 import Section from "../components/Section"
 import Triangle from "../components/Triangle"
-import ProjectStats from "../sections/ProjectStats"
+import ProjectStats from "../sections/ProjectPlatforms"
+import ProjectDescription from "../sections/ProjectDescription"
 
 const Background = () => (
   <div>
     <Triangle
-      color="backgroundDark"
-      height={["80vh", "100vh"]}
-      width={["100vw", "80vw"]}
-      // invertX
-    />
-
-    <Triangle
       color="secondary"
-      height={["80vh", "40vh"]}
-      width={["100vw", "150vw"]}
-      invertY
+      height={["100vh", "125vh"]}
+      width={["100vw", "100vw"]}
     />
-
-    <Triangle
-      color="background"
-      height={["50vh", "20vh"]}
-      width={["50vw", "50vw"]}
-      invertX
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={["25vh", "40vh"]}
-      width={["75vw", "60vw"]}
-      invertX
-      invertY
-    />
-
     <Triangle
       color="backgroundDark"
-      height={["25vh", "20vh"]}
+      height={["100vh", "125vh"]}
+      width={["80vw", "100vw"]}
+      invertX
+    />
+    <Triangle
+      color="backgroundDark"
+      height={["40vh", "100vh"]}
+      width={["120vw", "80vw"]}
+      invertX
+    />
+    <Triangle
+      color="text"
+      height={["15vh", "15vh"]}
       width={["100vw", "100vw"]}
       invertY
     />
@@ -71,16 +60,17 @@ export default ({ data }) => {
       />
       <ProjectHero
         name={project.frontmatter.title}
-        scrollTo="tools"
+        scrollTo="description"
         imgSrc={project.frontmatter.featimg.childImageSharp.fluid}
       />
-      <ProjectTools tools={project.frontmatter.tools} scrollTo={"platforms"} />
-      <ProjectStats
-        platforms={project.frontmatter.platforms}
-        scrollTo={"content-container"}
-        repoUrl={project.frontmatter.repositoryUrl}
+      <ProjectDescription
+        description={project.frontmatter.description}
+        scrollTo="tools"
       />
-
+      <ProjectTools
+        tools={project.frontmatter.tools}
+        scrollTo={"content-container"}
+      />
       <Section.Container id="content-container" Background={Background}>
         <MarkDownContainer>
           <ReactMarkdown
@@ -89,6 +79,12 @@ export default ({ data }) => {
           />
         </MarkDownContainer>
       </Section.Container>
+
+      <ProjectStats
+        platforms={project.frontmatter.platforms}
+        scrollTo={"content-container"}
+        repoUrl={project.frontmatter.repositoryUrl}
+      />
     </Layout>
   )
 }

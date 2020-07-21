@@ -70,6 +70,7 @@ const Toggler = styled(motion.nav)`
   position: fixed;
   top: 0;
   right: 0;
+  left: 0;
   bottom: 0;
   width: auto;
   z-index: 1;
@@ -87,13 +88,7 @@ const Path = props => (
 
 const MenuToggle = ({ toggle }) => (
   <Button onClick={toggle} data-testid="MenuToggle">
-    <motion.div
-      animate={{
-        scale: [1, 2, 2, 1, 1],
-        rotate: [0, 0, 270, 270, 0],
-        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-      }}
-    >
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <Svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           variants={{
@@ -136,10 +131,11 @@ const Background = styled(motion.div).attrs(() => ({
 }))`
   position: fixed;
   top: 0;
+  right: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh + 96px);
 `
 
 const Header = ({ menuLinks }) => {
@@ -190,7 +186,11 @@ const Header = ({ menuLinks }) => {
           custom={height}
           ref={containerRef}
         >
-          <Background className="menu-background" variants={sidebar} />
+          <Background
+            className="menu-background"
+            variants={sidebar}
+            onClick={() => toggleOpen()}
+          />
           <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
           <MenuToggle toggle={() => toggleOpen()} />
         </Toggler>

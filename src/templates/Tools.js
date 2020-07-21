@@ -14,6 +14,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Pagination from "../components/Pagination"
 import SubLandingPage from "../sections/SubPageLanding"
+import { motion } from "framer-motion"
 
 const Background = () => (
   <div>
@@ -45,34 +46,36 @@ const CoverImage = styled.img`
 `
 
 const Post = ({ fields, frontmatter }) => (
-  <Link to={fields.slug}>
-    <Card m={2} pb={4}>
-      <Heading
-        style={{ fontSize: "1.5em", fontWeight: 500, cursor: "pointer" }}
-        color="secondaryDark"
-        m={3}
-        mb={4}
-      >
-        {frontmatter.title}.
-      </Heading>
-      <ImageSubtitle bg="backgroundDark" color="text" x="right" y="top" round>
-        {frontmatter.platform.join(", ")}
-      </ImageSubtitle>
-      {frontmatter.featimg && (
-        <CoverImage
-          src={frontmatter.featimg.publicURL}
-          height="200px"
-          alt={frontmatter.title}
-        />
-      )}
-      <Text m={3} color="text">
-        {frontmatter.description}
-      </Text>
-      <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
-        {frontmatter.date}
-      </ImageSubtitle>
-    </Card>
-  </Link>
+  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+    <Link to={fields.slug}>
+      <Card m={2} pb={4}>
+        <Heading
+          style={{ fontSize: "1.5em", fontWeight: 500, cursor: "pointer" }}
+          color="secondaryDark"
+          m={3}
+          mb={4}
+        >
+          {frontmatter.title}.
+        </Heading>
+        <ImageSubtitle bg="backgroundDark" color="text" x="right" y="top" round>
+          {frontmatter.platform.join(", ")}
+        </ImageSubtitle>
+        {frontmatter.featimg && (
+          <CoverImage
+            src={frontmatter.featimg.publicURL}
+            height="200px"
+            alt={frontmatter.title}
+          />
+        )}
+        <Text m={3} color="text">
+          {frontmatter.description}
+        </Text>
+        <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
+          {frontmatter.date}
+        </ImageSubtitle>
+      </Card>
+    </Link>
+  </motion.div>
 )
 
 const getToolsArrFromQuery = tools => {
@@ -105,7 +108,7 @@ const ProjectIndex = ({ data, pageContext }) => {
       />
       <SubLandingPage name={pageHeader} scrollTo="projects" loop={allTools} />
       <Section.Container id="projects" Background={Background}>
-        <CardContainer minWidth="300px">
+        <CardContainer minWidth="300px" maxWidth="90%">
           {posts.map(({ node }, i) => (
             <Fade bottom key={i}>
               <Post {...node} key={i} />

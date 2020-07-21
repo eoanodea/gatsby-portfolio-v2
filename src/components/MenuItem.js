@@ -34,7 +34,7 @@ export const MenuItem = ({ item: { name, link }, toggle }) => {
       whileTap={{ scale: 0.95 }}
     >
       <LinkAnimated alt="true" selected={isSelected} onClick={toggle}>
-        <StyledLink to={link}>{name}</StyledLink>
+        <StyledLink to={link}>{name}.</StyledLink>
       </LinkAnimated>
     </Item>
   )
@@ -55,5 +55,6 @@ const Item = styled(motion.li).attrs(() => ({
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 5rem;
+  font-weight: 900;
 `

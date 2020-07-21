@@ -96,7 +96,7 @@ const ProjectTag = styled.div`
 
 const Project = ({ fields, frontmatter }) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
       <Card p={0} m={1}>
         <Link to={fields.slug}>
           <Flex style={{ height: CARD_HEIGHT }}>
@@ -130,7 +130,7 @@ const Project = ({ fields, frontmatter }) => {
                   {frontmatter.platform.join(", ")}
                 </ImageSubtitle>
                 <Hide query={MEDIA_QUERY_SMALL}>
-                  <ImageSubtitle bg="backgroundDark">
+                  <ImageSubtitle bg="backgroundDark" color="text">
                     {frontmatter.date}
                   </ImageSubtitle>
                 </Hide>
@@ -173,7 +173,7 @@ const Projects = () => (
         }
       `}
       render={({ allMarkdownRemark }) => (
-        <CardContainer minWidth="350px">
+        <CardContainer minWidth="350px" maxWidth="90%">
           {allMarkdownRemark.nodes.map((p, i) => (
             <Fade bottom delay={i * 200} key={i}>
               <Project {...p} />

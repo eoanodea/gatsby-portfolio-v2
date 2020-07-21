@@ -15,14 +15,14 @@ const Background = () => (
       color="text"
       height={["50vh", "125vh"]}
       width={["150vw", "100vw"]}
-      invertX
     />
 
     <Triangle
-      color="text"
+      color="backgroundDark"
       height={["50vh", "125vh"]}
       width={["150vw", "100vw"]}
       invertY
+      invertX
     />
   </div>
 )
@@ -33,7 +33,7 @@ const StyledToolHeading = styled(Heading)`
 `
 
 const StyledToolText = styled(Text)`
-  font-size: 2em;
+  font-size: 3em;
 `
 
 const ProjectTools = ({ tools, scrollTo }) => {
@@ -50,7 +50,7 @@ const ProjectTools = ({ tools, scrollTo }) => {
         <Fade>
           <StyledToolHeading color="white">Built with:</StyledToolHeading>
         </Fade>
-        <Flip top cascade>
+        <Flip top cascade delay={500}>
           <div>
             {tools.map((dat, i) => {
               return (
@@ -59,6 +59,7 @@ const ProjectTools = ({ tools, scrollTo }) => {
                     link={`/projects/tools/${_.kebabCase(dat)}`}
                     name={dat}
                     selected={false}
+                    fontSize={[4, 5]}
                   />
                 </StyledToolText>
               )

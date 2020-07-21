@@ -20,20 +20,28 @@ const Menu = styled(motion.ul).attrs(() => ({
 }))`
   margin: 0;
   padding: 0;
-  padding: 40px;
+`
+
+const MenuContainer = styled.div`
   position: absolute;
   top: 100px;
+  width: fit-content;
+  margin: 0 auto;
   right: 0;
-
-  width: 230px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Navigation = ({ toggle, menuLinks }) => (
-  <Menu variants={variants}>
-    {menuLinks.map((dat, i) => (
-      <MenuItem item={dat} key={i} toggle={toggle} />
-    ))}
-  </Menu>
+  <MenuContainer>
+    <Menu variants={variants}>
+      {menuLinks.map((dat, i) => (
+        <MenuItem item={dat} key={i} toggle={toggle} />
+      ))}
+    </Menu>
+  </MenuContainer>
 )
 
 export default Navigation

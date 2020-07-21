@@ -115,9 +115,9 @@ const Layout = ({ children, location }) => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <ScrollingProvider>
-          <Header menuLinks={data.site.siteMetadata.menuLinks} />
-          <AnimatePresence>
+        <Header menuLinks={data.site.siteMetadata.menuLinks} />
+        <AnimatePresence>
+          <ScrollingProvider>
             <Main
               key={location?.pathname}
               variants={variants}
@@ -127,9 +127,9 @@ const Layout = ({ children, location }) => {
             >
               {children}
             </Main>
-          </AnimatePresence>
-          <Footer />
-        </ScrollingProvider>
+          </ScrollingProvider>
+        </AnimatePresence>
+        <Footer />
       </>
     </ThemeProvider>
   )
