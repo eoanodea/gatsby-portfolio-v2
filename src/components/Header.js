@@ -145,7 +145,9 @@ const Header = ({ menuLinks }) => {
 
   const homeLink = (
     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-      {!isOpen && window.location.path !== "/" ? (
+      {!isOpen &&
+      typeof window !== "undefined" &&
+      window.location.path !== "/" ? (
         <Image
           src="/icon.png"
           width="60"
