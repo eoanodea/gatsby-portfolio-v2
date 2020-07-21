@@ -33,8 +33,13 @@ const TextFooter = styled(Text)`
   }
 `
 
+const StyledBox = styled(Box)`
+  position: absolute;
+  width: 100%;
+`
+
 const Footer = ({ siteTitle }) => (
-  <Box p={[2, 3]} backgroundColor="secondaryDark" id="footer">
+  <StyledBox p={[2, 3]} backgroundColor="secondaryDark" id="footer">
     <FooterContainer>
       <Fade left>
         <TextFooter fontSize={[3, 4]}>
@@ -54,6 +59,6 @@ const Footer = ({ siteTitle }) => (
         </Fade>
       </Flex>
     </FooterContainer>
-  </Box>
+  </StyledBox>
 )
 export default Footer
