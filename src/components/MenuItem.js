@@ -25,7 +25,11 @@ const variants = {
 
 export const MenuItem = ({ item: { name, link }, toggle }) => {
   const isSelected =
-    typeof window !== "undefined" ? link === window.location.pathname : false
+    typeof window !== "undefined"
+      ? link !== "/"
+        ? window.location.pathname.includes(link)
+        : link === window.location.pathname
+      : false
 
   return (
     <Item
@@ -41,7 +45,7 @@ export const MenuItem = ({ item: { name, link }, toggle }) => {
 }
 
 const StyledLink = styled(Link)`
-  color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
 `
 
 const Item = styled(motion.li).attrs(() => ({
