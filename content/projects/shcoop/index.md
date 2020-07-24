@@ -4,6 +4,8 @@ date: 2020-07-08
 description: Competitive party game hybrid application
 tools: ["Expo", "React Native", "Node.js", "Express.js", "Socket.IO"]
 platform: ["web", "iOS", "Android"]
+togglId: 160370775
+toggleHours: 0
 platforms:
   [
     { name: "Web", link: "https://shcoop.wspace.ie" },

@@ -26,7 +26,18 @@ module.exports = {
       },
     ],
   },
+  proxy: [
+    {
+      prefix: "/api",
+      url: "https://www.toggl.com",
+    },
+    {
+      prefix: "/reports/api",
+      url: "https://www.toggl.com",
+    },
+  ],
   plugins: [
+    `gatsby-env-variables`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-css-customs`,

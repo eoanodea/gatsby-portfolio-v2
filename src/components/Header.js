@@ -188,12 +188,23 @@ const Header = ({ menuLinks }) => {
           custom={height}
           ref={containerRef}
         >
-          <Background
-            className="menu-background"
-            variants={sidebar}
-            onClick={() => toggleOpen()}
-          />
-          <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
+          {isOpen ? (
+            <React.Fragment>
+              <Background
+                className="menu-background"
+                variants={sidebar}
+                onClick={() => toggleOpen()}
+              />
+              <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
+            </React.Fragment>
+          ) : (
+            <Background
+              className="menu-background"
+              variants={sidebar}
+              onClick={() => toggleOpen()}
+            />
+          )}
+
           <MenuToggle toggle={() => toggleOpen()} />
         </Toggler>
       </Flex>

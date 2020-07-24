@@ -7,6 +7,38 @@ const path = require(`path`)
 const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require(`gatsby-awesome-pagination`)
+const request = require("request")
+
+const { TOGGL_KEY, TOGGL_URL, CLIENT_ORIGIN } = require("gatsby-env-variables")
+
+/**
+ * Whitelist the domain for Toggl
+ *
+ */
+// const auth = `Basic ${Buffer.from(TOGGL_KEY + ":api_token").toString("base64")}`
+
+// const options = {
+//   method: "POST",
+//   url: `${TOGGL_URL}v9/me/cors`,
+//   headers: {
+//     Authorization: auth,
+//     "Content-Type": "application/json",
+//   },
+// }
+// console.log("starting console log!", options, CLIENT_ORIGIN)
+// request(
+//   options,
+//   JSON.stringify({
+//     domain: CLIENT_ORIGIN,
+//   }),
+//   function (error, response) {
+//     if (error) {
+//       console.log("error whitelisting domain!", error)
+//       throw new Error(error)
+//     }
+//     console.log("response from toggl!", response.body)
+//   }
+// )
 
 /**
  * Events
@@ -62,6 +94,14 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             return tools
           },
         },
+        // toggleHours: {
+        //   type: "Int!",
+        //   resolve(source, args, context, info) {
+        //     const { togglId } = source
+        //     console.log("toggl stuff!", togglId, "hmewahpeinwpihnew")
+        //     return 20
+        //   },
+        // },
       },
     }),
   ]

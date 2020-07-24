@@ -11,7 +11,6 @@ import ProjectTools from "../sections/ProjectTools"
 import Section from "../components/Section"
 import Triangle from "../components/Triangle"
 import ProjectStats from "../sections/ProjectPlatforms"
-import ProjectDescription from "../sections/ProjectDescription"
 
 const Background = () => (
   <div>
@@ -60,15 +59,14 @@ export default ({ data }) => {
       />
       <ProjectHero
         name={project.frontmatter.title}
-        scrollTo="description"
+        scrollTo="tools"
         imgSrc={project.frontmatter.featimg.childImageSharp.fluid}
       />
-      <ProjectDescription
-        description={project.frontmatter.description}
-        scrollTo="tools"
-      />
+
       <ProjectTools
+        description={project.frontmatter.description}
         tools={project.frontmatter.tools}
+        togglId={project.frontmatter.togglId}
         scrollTo={"content-container"}
       />
       <Section.Container id="content-container" Background={Background}>
@@ -103,6 +101,7 @@ export const query = graphql`
         repositoryUrl
         projectUrl
         tools
+        togglId
         platforms {
           name
           link
