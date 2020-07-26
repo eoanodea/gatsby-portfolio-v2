@@ -3,13 +3,22 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
 import PropTypes from "prop-types"
-import { ScrollingProvider } from "react-scroll-section"
-import config from "react-reveal/globals"
-import preset from "@rebass/preset"
 import { colors, IColorProps } from "../../colors"
 import Footer from "./Footer"
 import Header from "./Header"
+
 import { motion, AnimatePresence } from "framer-motion"
+
+/**
+ * Modules with no Typescript Support
+ */
+//@ts-ignore
+import { ScrollingProvider } from "react-scroll-section"
+//@ts-ignore
+import config from "react-reveal/globals"
+//@ts-ignore
+import preset from "@rebass/preset"
+import { IThemeProps } from "./Interfaces/theme-interfaces"
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -52,17 +61,6 @@ const loadScript = (src: string) => {
   document.getElementsByTagName("body")[0].appendChild(tag)
 }
 
-export interface IThemeProps {
-  theme: {
-    colors: IColorProps
-  }
-  fonts: {
-    body: string
-    heading: string
-    monospace: string
-  }
-}
-
 const theme: IThemeProps = {
   ...preset,
   colors,
@@ -102,7 +100,7 @@ const Main = styled(motion.main).attrs(() => ({
   /* flex-grow: 1; */
 `
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location }: any) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -124,7 +122,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <React.Fragment>
+      <>
         <GlobalStyle />
         <Header menuLinks={data.site.siteMetadata.menuLinks} />
         <AnimatePresence>
@@ -140,8 +138,8 @@ const Layout = ({ children, location }) => {
             </Main>
           </ScrollingProvider>
         </AnimatePresence>
-        <Footer />
-      <React.Fragment/>
+        <Footer siteTitle={data.site.siteMetadata.title} />
+      </>
     </ThemeProvider>
   )
 }

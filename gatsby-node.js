@@ -7,7 +7,7 @@ const path = require(`path`)
 const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require(`gatsby-awesome-pagination`)
-const request = require("request")
+// const request = require("request")
 
 const { TOGGL_KEY, TOGGL_URL, CLIENT_ORIGIN } = require("gatsby-env-variables")
 
@@ -158,10 +158,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   // Generate single post pages
   const posts = queryResult.data.postQuery.edges
+  /**
+   * @param {{ node: { fields: { slug: any; }; }; }} post
+   */
   posts.forEach(post => {
     createPage({
       path: post.node.fields.slug,
-      component: path.resolve(`./src/templates/Project.js`),
+      component: path.resolve(`./src/templates/Project.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -176,7 +179,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     items: posts, // An array of objects
     itemsPerPage: 2, // How many items you want per page
     pathPrefix: "/projects", // Creates pages like `/blog`, `/blog/2`, etc
-    component: path.resolve(`./src/templates/Projects.js`), // Just like `createPage()`
+    component: path.resolve(`./src/templates/Projects.tsx`), // Just like `createPage()`
   })
 
   const taxonomies = queryResult.data.taxQuery.group
@@ -186,7 +189,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       items: nodes, // An array of objects
       itemsPerPage: 2, // How many items you want per page
       pathPrefix: `/projects/tools/${_.kebabCase(fieldValue)}`, // Creates pages like `/blog`, `/blog/2`, etc
-      component: path.resolve(`./src/templates/Tools.js`), // Just like `createPage()`
+      component: path.resolve(`./src/templates/Tools.tsx`), // Just like `createPage()`
       context: { tools: fieldValue },
     })
   })

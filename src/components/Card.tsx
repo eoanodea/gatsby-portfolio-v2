@@ -1,14 +1,19 @@
 import styled from "styled-components"
 import { Card as CardRebass } from "rebass/styled-components"
 
+interface IProps {
+  maxWidth: string
+  minWidth: string
+}
+
 export const CardContainer = styled.div`
   display: grid;
   grid-gap: 30px;
-  max-width: ${props => props.maxWidth};
+  max-width: ${(props: IProps) => props.maxWidth};
   margin: 0 auto;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(${props => props.minWidth}, 1fr)
+    minmax(${(props: IProps) => props.minWidth}, 1fr)
   );
   justify-items: center;
 

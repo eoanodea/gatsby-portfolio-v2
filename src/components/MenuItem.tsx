@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import LinkAnimated from "./LinkAnimated"
+import { IMenuItemProps } from "./Interfaces/header-interfaces"
 
 const variants = {
   open: {
@@ -23,7 +24,7 @@ const variants = {
   },
 }
 
-export const MenuItem = ({ item: { name, link }, toggle }) => {
+export const MenuItem = ({ item: { name, link }, toggle }: IMenuItemProps) => {
   const isSelected =
     typeof window !== "undefined"
       ? link !== "/"

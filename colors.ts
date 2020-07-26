@@ -1,4 +1,5 @@
 export interface IColorProps {
+  [key: string]: string
   background: string
   backgroundDark: string
   text: string

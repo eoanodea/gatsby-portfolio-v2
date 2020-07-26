@@ -38,7 +38,7 @@ const StyledBox = styled(Box)`
   width: 100%;
 `
 
-const Footer = ({ siteTitle }) => (
+const Footer = ({ siteTitle }: { siteTitle: string }) => (
   <StyledBox p={[2, 3]} backgroundColor="secondaryDark" id="footer">
     <FooterContainer>
       <Fade left>

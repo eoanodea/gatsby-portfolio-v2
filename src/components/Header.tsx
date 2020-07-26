@@ -7,6 +7,7 @@ import { Link } from "gatsby"
 import { motion, useCycle } from "framer-motion"
 import { useDimensions } from "../hooks/useDimensions"
 import Navigation from "./Navigation"
+import { IMenuProps } from "./Interfaces/header-interfaces"
 
 const HeaderContainer = styled(Headroom)`
   * {
@@ -76,7 +77,11 @@ const Toggler = styled(motion.nav)`
   z-index: 1;
 `
 
-const Path = props => (
+const Path = (
+  props: JSX.IntrinsicAttributes &
+    import("framer-motion").SVGMotionProps<SVGPathElement> &
+    React.RefAttributes<SVGPathElement>
+) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
@@ -86,7 +91,7 @@ const Path = props => (
   />
 )
 
-const MenuToggle = ({ toggle }) => (
+const MenuToggle = ({ toggle }: { toggle: () => void }) => (
   <Button onClick={toggle} data-testid="MenuToggle">
     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <Svg width="23" height="23" viewBox="0 0 23 23">
@@ -138,7 +143,7 @@ const Background = styled(motion.div).attrs(() => ({
   height: calc(100vh + 96px);
 `
 
-const Header = ({ menuLinks }) => {
+const Header = ({ menuLinks }: IMenuProps) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)

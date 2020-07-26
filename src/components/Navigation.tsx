@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "framer-motion"
 import styled from "styled-components"
 import { MenuItem } from "./MenuItem"
+import { IMenuProps } from "./Interfaces/header-interfaces"
 
 const variants = {
   open: {
@@ -33,8 +34,11 @@ const MenuContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
+interface IProps extends IMenuProps {
+  toggle: () => void
+}
 
-const Navigation = ({ toggle, menuLinks }) => (
+const Navigation = ({ toggle, menuLinks }: IProps) => (
   <MenuContainer>
     <Menu variants={variants}>
       {menuLinks.map((dat, i) => (

@@ -1,4 +1,11 @@
 import styled from "styled-components"
+import { IThemeProps } from "./Layout"
+
+interface IProps extends IThemeProps {
+  alt?: "string"
+  selected?: boolean
+  onClick?: () => void
+}
 
 const LinkAnimated = styled.span`
   text-decoration: none;
@@ -6,7 +13,7 @@ const LinkAnimated = styled.span`
   margin-bottom: 0;
   padding-bottom: 5px;
   color: inherit;
-  ${props =>
+  ${(props: IProps) =>
     props.selected &&
     `border-bottom: 5px solid ${
       props.alt
@@ -14,7 +21,7 @@ const LinkAnimated = styled.span`
         : props.theme.colors.primaryLight
     }`};
   transition: 0.4s;
-  cursor: ${props => (props.onClick ? "pointer" : "default")};
+  cursor: ${(props: IProps) => (props.onClick ? "pointer" : "default")};
 
   &:after {
     content: "";
@@ -22,7 +29,7 @@ const LinkAnimated = styled.span`
     right: 0;
     width: 0;
     bottom: -5px;
-    background: ${props =>
+    background: ${(props: IProps) =>
       props.alt
         ? props.theme.colors.secondaryLight
         : props.theme.colors.secondaryLight};
