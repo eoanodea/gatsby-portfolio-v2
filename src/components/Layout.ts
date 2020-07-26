@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 import { ScrollingProvider } from "react-scroll-section"
 import config from "react-reveal/globals"
 import preset from "@rebass/preset"
-import colors from "../../colors"
+import { colors, IColorProps } from "../../colors"
 import Footer from "./Footer"
 import Header from "./Header"
 import { motion, AnimatePresence } from "framer-motion"
@@ -26,8 +26,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     width: 100vw;
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: ${(props: IThemeProps) => props.theme.colors.background};
+    color: ${(props: IThemeProps) => props.theme.colors.text};
   }
   h1, h2 {
     font-family: 'Montserrat';
@@ -37,14 +37,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400
   }
   .menu-background {
-    background: ${props => props.theme.colors.primaryDark};
+    background: ${(props: IThemeProps) => props.theme.colors.primaryDark};
     padding: 10px;
   }
 `
 
 config({ ssrFadeout: true })
 
-const loadScript = src => {
+const loadScript = (src: string) => {
   const tag = document.createElement("script")
   tag.src = src
   tag.defer = true
@@ -52,7 +52,18 @@ const loadScript = src => {
   document.getElementsByTagName("body")[0].appendChild(tag)
 }
 
-const theme = {
+export interface IThemeProps {
+  theme: {
+    colors: IColorProps
+  }
+  fonts: {
+    body: string
+    heading: string
+    monospace: string
+  }
+}
+
+const theme: IThemeProps = {
   ...preset,
   colors,
   fonts: {
@@ -113,7 +124,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <React.Fragment>
         <GlobalStyle />
         <Header menuLinks={data.site.siteMetadata.menuLinks} />
         <AnimatePresence>
@@ -130,7 +141,7 @@ const Layout = ({ children, location }) => {
           </ScrollingProvider>
         </AnimatePresence>
         <Footer />
-      </>
+      <React.Fragment/>
     </ThemeProvider>
   )
 }
