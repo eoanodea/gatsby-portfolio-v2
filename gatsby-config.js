@@ -37,10 +37,9 @@ module.exports = {
     },
   ],
   plugins: [
+    `gatsby-plugin-ts`,
     `gatsby-env-variables`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-css-customs`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
