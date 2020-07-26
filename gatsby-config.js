@@ -85,11 +85,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Project`,
-        short_name: `The Project`,
+        name: `Eoan O Dea Portfolio`,
+        short_name: `Portfolio`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#ffffff`,
+        background_color: `#05dfd7`,
+        theme_color: `#fa26a0`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,

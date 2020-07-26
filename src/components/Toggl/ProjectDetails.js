@@ -8,6 +8,8 @@ import { TOGGL_KEY } from "gatsby-env-variables"
 import { Fade, Flip } from "react-reveal"
 import moment from "moment"
 import ProjectHours from "./ProjectHours"
+import ProjectGraph from "./ProjectGraph"
+import CountUp from "react-countup"
 
 const StyledToolSubHeading = styled(Heading)`
   font-size: 1.8em;
@@ -50,25 +52,30 @@ const ProjectDetails = ({ togglId }) => {
       const auth = `Basic ${Buffer.from(TOGGL_KEY + ":api_token").toString(
         "base64"
       )}`
+      const body = {
+        start_date: moment(obj.created).format("YYYY-MM-DD"),
+        end_date: moment().format("YYYY-MM-DD"),
+        grouping: "projects",
+        project_ids: [togglId],
+        sub_grouping: "time_entries",
+        with_graph: true,
+      }
 
-      fetch(
-        `/reports/api/v2/summary?since=${moment(obj.created).format(
-          "YYYY-MM-DD"
-        )}&workspace_id=${obj.wid}&project_ids=${togglId}&user_agent=api_test`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: auth,
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      fetch(`/reports/api/v3/workspace/${obj.wid}/search/time_entries/totals`, {
+        method: "POST",
+        headers: {
+          Authorization: auth,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(body),
+      })
         .then(res => res.json())
         .then(res => {
-          console.log("response success!", res)
-          setEntries(res.data[0].items)
-          setTotalEntries(res.data[0].items.length)
+          console.log("details success!", res)
+          const results = res.graph.filter(dat => dat.seconds !== 0)
+          setEntries(results)
+          setTotalEntries(results.length)
           setLoading(false)
         })
         .catch(err => {
@@ -111,6 +118,13 @@ const ProjectDetails = ({ togglId }) => {
   if (togglId) {
     return (
       <Flex justifyContent="space-between" flexWrap="wrap">
+        {workSpaceObj && (
+          <ProjectGraph
+            entries={entries}
+            start={moment(workSpaceObj.created).format("YYYY-MM-DD")}
+            end={moment().format("YYYY-MM-DD")}
+          />
+        )}
         <ProjectHours
           setWorkSpaceIdFromProps={setWorkSpaceIdFromProps}
           togglId={togglId}
@@ -152,10 +166,10 @@ const ProjectDetails = ({ togglId }) => {
                 ) : (
                   <Flip bottom cascade delay={200}>
                     <StyledToolSubHeading color="white">
-                      # of Entries:
+                      # of Weeks:
                     </StyledToolSubHeading>
                     <StyledToolText color="background">
-                      {totalEntries}
+                      <CountUp end={totalEntries} duration={4} />
                     </StyledToolText>
                   </Flip>
                 )}
@@ -168,7 +182,6 @@ const ProjectDetails = ({ togglId }) => {
   }
 
   return <></>
-  //   return <CountUp start={0} end={hours} duration={5} useEasing={true} />
 }
 
 export default ProjectDetails

@@ -5,6 +5,7 @@
   "author": "Eoan O'Dea",
   "license": "MIT",
   "dependencies": {
+    "@antv/g2plot": "^1.1.14",
     "@opd/g2plot-react": "^1.7.4",
     "@rebass/preset": "^4.0.5",
     "@tippy.js/react": "^3.1.1",

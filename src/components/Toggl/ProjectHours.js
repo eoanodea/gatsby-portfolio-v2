@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useCallback } from "react"
 
 import { Text, Heading, Box } from "rebass/styled-components"
 import CountUp from "react-countup"
@@ -33,10 +33,13 @@ const StyledLoadingAnimation = styled(motion.div)`
 
 const ProjectHours = ({ togglId, setWorkSpaceIdFromProps }) => {
   const [hours, setHours] = React.useState(0)
+  const [running, setRunning] = React.useState(false)
+
   const [loading, setLoading] = React.useState(true)
 
-  useEffect(() => {
-    if (togglId) {
+  const fetchProject = useCallback(() => {
+    if (!running) {
+      setRunning(true)
       const auth = `Basic ${Buffer.from(TOGGL_KEY + ":api_token").toString(
         "base64"
       )}`
@@ -63,7 +66,16 @@ const ProjectHours = ({ togglId, setWorkSpaceIdFromProps }) => {
           setLoading(false)
         })
     }
-  }, [togglId, setWorkSpaceIdFromProps])
+  })
+
+  useEffect(() => {
+    console.log("running effect")
+    if (togglId && loading) {
+      fetchProject()
+    }
+
+    // if (hours === 0 && togglId && loading) fetchProject()
+  }, [togglId, loading, fetchProject])
 
   if (togglId) {
     return (
@@ -104,7 +116,7 @@ const ProjectHours = ({ togglId, setWorkSpaceIdFromProps }) => {
               </StyledToolText>
             </Fade>
           ) : (
-            <Flip bottom cascade delay={200}>
+            <Flip bottom cascade>
               <StyledToolSubHeading color="white">Hours:</StyledToolSubHeading>
               <StyledToolText color="background">
                 <CountUp end={hours} duration={6} />
@@ -117,7 +129,6 @@ const ProjectHours = ({ togglId, setWorkSpaceIdFromProps }) => {
   }
 
   return <></>
-  //   return <CountUp start={0} end={hours} duration={5} useEasing={true} />
 }
 
 export default ProjectHours
