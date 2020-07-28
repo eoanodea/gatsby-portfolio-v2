@@ -2,7 +2,7 @@
 
 # Gatsby Portfolio Website
 
-This is a portfolio website built using Gatsby. The structure was taken from a LinkedIn Learning course Learning Gatsby. The full course is available from [LinkedIn Learning](https://www.linkedin.com/learning/learning-gatsby/).
+This is a portfolio website built using Gatsby. The structure was taken from a LinkedIn Learning course Learning Gatsby.
 
 ## How to run this code
 

@@ -1,68 +1,67 @@
-import React, { Fragment } from "react"
-import { StaticQuery, graphql } from "gatsby"
+import * as React from 'react';
+import Link from 'gatsby-link';
+import { graphql } from 'gatsby';
+import PageProps from '../models/PageProps';
+import DefaultLayout from '../layouts';
+import './index.scss';
 
-import Layout from "../components/Layout"
-import Landing from "../sections/Landing"
-import About from "../sections/About"
-import Projects from "../sections/Projects"
+class IndexPage extends React.Component<PageProps> {
+  public render() {
+    const { data } = this.props;
+    const { edges } = data.allMarkdownRemark;
 
-import SEO from "../components/SEO"
-
-const IndexPage = () => {
-  return (
-    <Layout>
-      <SEO
-        title="Home"
-        description="Eoan O'Dea Portfolio Website - Build using Gatsby & React.js"
-        image="/logo.png"
-        pathname="/"
-        // Boolean indicating whether this is an project:
-        // project
-      />
-      <StaticQuery
-        query={graphql`
-          query AboutSectionQuery {
-            allMarkdownRemark(
-              filter: { frontmatter: { title: { eq: "About" } } }
-            ) {
-              edges {
-                node {
-                  id
-                  frontmatter {
-                    title
-                    name
-                    roles
-                    socialLinks {
-                      name
-                      link
-                      icon
-                    }
-                  }
-                  rawMarkdownBody
-                }
-              }
-            }
-          }
-        `}
-        render={({ allMarkdownRemark }) => {
-          const {
-            name,
-            socialLinks,
-            roles,
-          } = allMarkdownRemark.edges[0].node.frontmatter
-          const { rawMarkdownBody } = allMarkdownRemark.edges[0].node
-
-          return (
-            <Fragment>
-              <Landing socialLinks={socialLinks} name={name} roles={roles} />
-              <About markDown={rawMarkdownBody} />
-              <Projects />
-            </Fragment>
-          )
-        }}
-      />
-    </Layout>
-  )
+    return (
+      <>
+        <DefaultLayout />
+        {edges ? (
+          <div className="content">
+            {edges.map(({ node }) => {
+              const post = node;
+              return (
+                <div className="post-wrapper" key={post.id}>
+                  <div className="post">
+                    <h2>
+                      <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+                    </h2>
+                    <p>{post.frontmatter.excerpt}</p>
+                    <p>{post.frontmatter.date}</p>
+                  </div>
+                  <ul key={post.id}>
+                    {post.frontmatter.tags.map((tag, index) => (
+                      <li key={index}>
+                        <Link to={`/tags/${tag}`}>{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+      </>
+    );
+  }
 }
 
-export default IndexPage
+export default IndexPage;
+
+export const query = graphql`
+  query IndexQuery {
+    allMarkdownRemark {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            path
+            categories
+            tags
+            excerpt
+          }
+        }
+      }
+    }
+  }
+`;
