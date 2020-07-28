@@ -1,37 +1,105 @@
-.content {
-  .post-wrapper {
-    border: 1px solid #f7f7f7;
-    margin: 10px;
+.list {
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+}
 
-    .post {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      padding: 10px;
+.scroll {
+  flex: 1;
+  height: 1px;
+  overflow: hidden;
+  padding: 30px;
+  width: 100%;
+}
 
-      h2 {
-        width: 100%;
-      }
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+}
 
-      p {
-        margin-bottom: 5px;
-        margin-right: 10px;
-      }
-    }
+.card-1 {
+  background: var(--token-26cba154-fd5a-47be-9ddc-7fc14208210a, #0099ff) /* {"name":"Light Blue"} */;
+}
 
-    ul {
-      display: flex;
+.card-2 {
+  background: var(--token-f05525f8-9f44-4728-8ec4-c4c48f8e5443, #6633ff) /* {"name":"Purple"} */;
+}
 
-      li {
-        list-style: none;
-      }
+.card-3 {
+  background-color: #fb0;
+}
 
-      a {
-        background-color: #cecece;
-        border-radius: 3px;
-        margin: 10px;
-        padding: 5px 10px;
-      }
-    }
+.card {
+  border-radius: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 403px;
+  justify-content: flex-end;
+  margin: 25px 0;
+  overflow: visible;
+  padding: 10px;
+  width: 100%;
+
+  & .title {
+    font-size: 45px;
+    font-weight: 800;
+  }
+
+  & .desc {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 1.2;
   }
 }
+
+.card-alt {
+  color: #000;
+}
+// .content {
+//   .post-wrapper {
+//     border: 1px solid #f7f7f7;
+//     margin: 10px;
+
+//     .post {
+//       display: flex;
+//       flex-wrap: wrap;
+//       justify-content: flex-start;
+//       padding: 10px;
+
+//       h2 {
+//         width: 100%;
+//       }
+
+//       p {
+//         margin-bottom: 5px;
+//         margin-right: 10px;
+//       }
+//     }
+
+//     ul {
+//       display: flex;
+
+//       li {
+//         list-style: none;
+//       }
+
+//       a {
+//         background-color: #cecece;
+//         border-radius: 3px;
+//         margin: 10px;
+//         padding: 5px 10px;
+//       }
+//     }
+//   }
+// }

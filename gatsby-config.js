@@ -1,12 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Typescript Sample`,
+    title: `Eoan O'Dea Portfolio`,
     titleTemplate: `%s · Full Stack Developer, Designer, Engineer & Entrepreneur`,
     logo: `/logo.png`
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sass',
     'gatsby-plugin-manifest',
