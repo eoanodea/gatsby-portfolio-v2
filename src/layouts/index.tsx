@@ -1,21 +1,26 @@
 import * as React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
 
 import './index.scss';
-import { SiteData } from '../models/SiteData';
 
 class Header extends React.PureComponent<{}> {
   public render() {
     return (
-      <div className="header">
-        <h1>
-          <Link to="/">Gatsby</Link>
-        </h1>
-        <Link to="/categories">Categories</Link>
-        <Link to="/tags">Tags</Link>
-      </div>
+      <header className="header">
+        <div>
+          <Link to="/">
+            <h1>Eoan O'Dea</h1>
+            <span className="date">Portfolio</span>
+          </Link>
+        </div>
+        <div className="header-links">
+          <Link to="/">Home</Link>
+          <Link to="/tags">About</Link>
+          <Link to="/categories">Projects</Link>
+          <Link to="/tags">Contact</Link>
+        </div>
+      </header>
     );
   }
 }
@@ -26,7 +31,7 @@ interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
   };
 }
 
-class DefaultLayout extends React.Component<DefaultLayoutProps & SiteData> {
+class DefaultLayout extends React.Component<DefaultLayoutProps> {
   public render() {
     return (
       <div>

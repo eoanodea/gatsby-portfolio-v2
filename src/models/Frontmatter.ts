@@ -5,6 +5,11 @@ interface Frontmatter {
   categories: string[];
   tags: string[];
   excerpt: string;
+  backgroundColor: string;
+  pointOfInterest: number;
+  featureImg: {
+    publicURL: string;
+  };
 }
 
 export default Frontmatter;

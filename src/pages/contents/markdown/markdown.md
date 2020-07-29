@@ -5,6 +5,9 @@ title: 'About Markdown'
 categories: ['markdown']
 tags: ['markdown']
 excerpt: 'About Markdown'
+backgroundColor: '#814A0E'
+pointOfInterest: 80
+featureImg: 'b.jpg'
 ---
 
 ```

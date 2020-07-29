@@ -5,6 +5,9 @@ title: 'About Gatsby'
 categories: ['gatsby', 'react']
 tags: ['gatsby', 'react', 'typescript', 'graphql']
 excerpt: 'Gatsby Sample Page'
+backgroundColor: '#959684'
+pointOfInterest: 120
+featureImg: 'a.jpg'
 ---
 
 ### About Gatsby
