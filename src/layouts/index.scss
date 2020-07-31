@@ -12,6 +12,7 @@ h5 {
 }
 
 h1 {
+  color: #fff;
   font-size: 4.209em;
   font-weight: 800;
   margin: 0px 0 12px;
@@ -43,7 +44,13 @@ p {
 
 a {
   color: inherit;
+  font-size: 1.333em;
   text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body {

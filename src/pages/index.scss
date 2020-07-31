@@ -38,6 +38,13 @@
   background-color: #fb0;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: center;
+}
+
 .card {
   border-radius: 16px;
   color: #fff;

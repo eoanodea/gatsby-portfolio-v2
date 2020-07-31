@@ -5,6 +5,7 @@ import DefaultLayout from '../layouts';
 
 import './index.scss';
 import { CardList } from '../components/CardList';
+import MouseIcon from '../components/MouseIcon';
 
 class IndexPage extends React.Component<PageProps> {
   public render() {
@@ -14,9 +15,10 @@ class IndexPage extends React.Component<PageProps> {
     return (
       <div className="container">
         <DefaultLayout />
-        <div className="card card-alt">
+        <div className="hero">
           <h1 className="title">Hello</h1>
           <h4 className="desc">Welcome to my potfolio</h4>
+          <MouseIcon />
         </div>
 
         {edges ? <CardList edges={edges} /> : null}

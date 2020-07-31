@@ -1,29 +1,8 @@
 import * as React from 'react';
-import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
 import './index.scss';
-
-class Header extends React.PureComponent<{}> {
-  public render() {
-    return (
-      <header className="header">
-        <div>
-          <Link to="/">
-            <h4>Eoan O'Dea</h4>
-            <span className="date">Portfolio</span>
-          </Link>
-        </div>
-        <div className="header-links">
-          <Link to="/">Home</Link>
-          <Link to="/tags">About</Link>
-          <Link to="/categories">Projects</Link>
-          <Link to="/tags">Contact</Link>
-        </div>
-      </header>
-    );
-  }
-}
+import Header from '../components/Header';
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
   location?: {
