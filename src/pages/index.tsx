@@ -4,8 +4,7 @@ import PageProps from '../models/PageProps';
 import DefaultLayout from '../layouts';
 
 import './index.scss';
-
-import { Card } from '../components/Card';
+import { CardList } from '../components/CardList';
 
 class IndexPage extends React.Component<PageProps> {
   public render() {
@@ -17,18 +16,10 @@ class IndexPage extends React.Component<PageProps> {
         <DefaultLayout />
         <div className="card card-alt">
           <h1 className="title">Hello</h1>
-          <p className="desc">Welcome to my potfolio</p>
+          <h4 className="desc">Welcome to my potfolio</h4>
         </div>
 
-        {edges ? (
-          <ul className="card-list">
-            {edges.map(({ node }, i) => {
-              const card = node.frontmatter;
-              const isSelected = typeof window !== 'undefined' && card.path === window.location.pathname;
-              return <Card key={i} isSelected={isSelected} {...card} />;
-            })}
-          </ul>
-        ) : null}
+        {edges ? <CardList edges={edges} /> : null}
       </div>
     );
   }

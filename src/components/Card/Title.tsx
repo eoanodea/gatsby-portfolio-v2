@@ -6,17 +6,16 @@ interface IProps {
   title: string;
   categories: string[];
   isSelected: boolean;
-  toggleCard: () => void;
 }
 
-export const Title = ({ title, categories, isSelected, toggleCard }: IProps) => {
+export const Title = ({ title, categories, isSelected }: IProps) => {
   const inverted = useInvertedScale();
   const x = isSelected ? 30 : 15;
   const y = x;
 
   return (
     <motion.div
-      className="title-container"
+      className={`title-container ${isSelected && 'title-container-selected'}`}
       initial={false}
       animate={{ x, y }}
       transition={isSelected ? openSpring : closeSpring}
@@ -26,12 +25,10 @@ export const Title = ({ title, categories, isSelected, toggleCard }: IProps) => 
       {categories.map((category, i) => (
         <span key={i} className="category">
           {category}
+          {i !== categories.length - 1 && ', '}
         </span>
       ))}
       <h2>{title}</h2>
-      <div className="close-icon">
-        <h2 onClick={() => toggleCard()}>X</h2>
-      </div>
     </motion.div>
   );
 };
@@ -49,4 +46,4 @@ export const Title = ({ title, categories, isSelected, toggleCard }: IProps) => 
  * the scale of the parent component. Because of this we want to translate
  * through scaled coordinate space, and can use the transformTemplate prop to do so.
  */
-const scaleTranslate = ({ x, y, scaleX, scaleY }) => `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
+const scaleTranslate = ({ x, y, scaleX, scaleY }: any) => `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;

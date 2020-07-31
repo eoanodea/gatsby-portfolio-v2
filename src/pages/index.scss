@@ -50,14 +50,8 @@
   padding: 10px;
   width: 100%;
 
-  & .title {
-    font-size: 45px;
-    font-weight: 800;
-  }
-
   & .desc {
-    font-size: 20px;
-    font-weight: 600;
+    color: #fff;
     letter-spacing: 0px;
     line-height: 1.2;
   }
@@ -66,40 +60,3 @@
 .card-alt {
   color: #000;
 }
-// .content {
-//   .post-wrapper {
-//     border: 1px solid #f7f7f7;
-//     margin: 10px;
-
-//     .post {
-//       display: flex;
-//       flex-wrap: wrap;
-//       justify-content: flex-start;
-//       padding: 10px;
-
-//       h2 {
-//         width: 100%;
-//       }
-
-//       p {
-//         margin-bottom: 5px;
-//         margin-right: 10px;
-//       }
-//     }
-
-//     ul {
-//       display: flex;
-
-//       li {
-//         list-style: none;
-//       }
-
-//       a {
-//         background-color: #cecece;
-//         border-radius: 3px;
-//         margin: 10px;
-//         padding: 5px 10px;
-//       }
-//     }
-//   }
-// }

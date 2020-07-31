@@ -8,13 +8,18 @@ interface IProps {
   isSelected: boolean;
   pointOfInterest?: number;
   backgroundColor: string;
+  toggleCard: () => void;
 }
 
-export const Image = ({ title, featureImg, isSelected, pointOfInterest = 0, backgroundColor }: IProps) => {
+export const Image = ({ title, featureImg, isSelected, pointOfInterest = 0, backgroundColor, toggleCard }: IProps) => {
   const inverted = useInvertedScale();
 
   return (
-    <motion.div className="card-image-container" style={{ ...inverted, backgroundColor, originX: 0, originY: 0 }}>
+    <motion.div
+      onClick={() => toggleCard()}
+      className="card-image-container"
+      style={{ ...inverted, backgroundColor, originX: 0, originY: 0 }}
+    >
       <motion.img
         className="card-image"
         src={featureImg}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { memo, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 
-import { ContentPlaceholder } from './ContentPlaceholder';
+import { Content } from './Content';
 import { Title } from './Title';
 import { Image } from './Image';
 import { openSpring, closeSpring } from './animations';
@@ -21,7 +21,7 @@ interface Props extends Frontmatter {
 const dismissDistance = 150;
 
 export const Card = memo(
-  ({ featureImg, title, path, isSelected, categories, pointOfInterest, backgroundColor }: Props) => {
+  ({ featureImg, title, excerpt, isSelected, categories, pointOfInterest, backgroundColor }: Props) => {
     const [isActive, setIsActive] = React.useState(isSelected);
 
     const toggleCard = () => {
@@ -39,10 +39,10 @@ export const Card = memo(
     const constraints = useScrollConstraints(cardRef, isActive);
 
     function checkSwipeToDismiss() {
-      y.get() > dismissDistance && toggleCard();
+      if (y.get() > dismissDistance || y.get() < dismissDistance * -2) toggleCard();
     }
 
-    function checkZIndex(latest) {
+    function checkZIndex(latest: { scaleX: number }) {
       if (isActive) {
         zIndex.set(2);
       } else if (!isActive && latest.scaleX < 1.01) {
@@ -52,17 +52,18 @@ export const Card = memo(
 
     // When this card is selected, attach a wheel event listener
     const containerRef = useRef(null);
-    useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, isSelected);
+    useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, isActive);
 
     return (
-      <li ref={containerRef} className={`card`}>
-        <Overlay isSelected={isActive} />
-        <div className={`card-content-container ${isActive && 'open'}`}>
+      <li ref={containerRef} className={`card`} onClick={() => toggleCard()}>
+        <Overlay isSelected={isActive} toggleCard={toggleCard} />
+        <div className={`card-content-container ${isActive ? 'open' : ''}`}>
           <motion.div
             ref={cardRef}
             className="card-content"
             style={{ ...inverted, zIndex, y }}
-            layoutTransition={isActive ? openSpring : closeSpring}
+            animate={{ y: isActive ? 10 : 30 }}
+            transition={isActive ? openSpring : closeSpring}
             drag={isActive ? 'y' : false}
             dragConstraints={constraints}
             onDrag={checkSwipeToDismiss}
@@ -74,34 +75,25 @@ export const Card = memo(
               isSelected={isActive}
               pointOfInterest={pointOfInterest}
               backgroundColor={backgroundColor}
+              toggleCard={toggleCard}
             />
-            <Title toggleCard={toggleCard} title={title} categories={categories} isSelected={isActive} />
-            <ContentPlaceholder />
+            <Title title={title} categories={categories} isSelected={isActive} />
+            <Content content={excerpt} />
           </motion.div>
         </div>
-        {!isActive && (
-          <p onClick={toggleCard} className={`card-open-link`}>
-            Click me!
-          </p>
-        )}
       </li>
     );
   },
   (prev, next) => prev.isSelected === next.isSelected
 );
 
-const Overlay = ({ isSelected }: any) => (
+const Overlay = ({ isSelected, toggleCard }: any) => (
   <motion.div
+    onClick={toggleCard}
     initial={false}
     animate={{ opacity: isSelected ? 1 : 0 }}
-    transition={{ duration: 0.2 }}
+    transition={{ duration: 0.3 }}
     style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
     className="overlay"
-  >
-    <div
-      onClick={() => {
-        console.log('yeehaw overlay boy');
-      }}
-    ></div>
-  </motion.div>
+  ></motion.div>
 );

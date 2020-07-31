@@ -10,7 +10,7 @@ class Header extends React.PureComponent<{}> {
       <header className="header">
         <div>
           <Link to="/">
-            <h1>Eoan O'Dea</h1>
+            <h4>Eoan O'Dea</h4>
             <span className="date">Portfolio</span>
           </Link>
         </div>

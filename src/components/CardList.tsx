@@ -1,26 +1,15 @@
-// import * as React from 'react';
-// import { Card } from './Card';
+import * as React from 'react';
+import { Card } from './Card';
 
-// import { CardData } from '../interfaces/card-interfaces';
-// import Frontmatter from '../models/Frontmatter';
-
-// export const CardList = (posts: Frontmatter[]) => (
-//   <ul className="card-list">
-//     {console.log('posts!', posts)}
-//     {posts.map(({ node }, i: number) => {
-//       const card = node;
-//       const isSelected = typeof window !== 'undefined' && card.path === window.location.pathname;
-
-//       return <Card key={i} isSelected={isSelected} {...card} />;
-//     })}
-//   </ul>
-// );
-
-// // export const CardList = () => (
-// //   <Router>
-// //     <Route path={['/:id', '/']} component={List} />
-// //   </Router>
-// // );
+export const CardList = (props: any) => (
+  <ul className="card-list">
+    {props.edges.map(({ node }: any, i: number) => {
+      const card = node.frontmatter;
+      const isSelected = typeof window !== 'undefined' && card.path === window.location.pathname;
+      return <Card key={i} isSelected={isSelected} {...card} />;
+    })}
+  </ul>
+);
 
 // const cardData: CardData[] = [
 //   // Photo by ivan Torres on Unsplash
