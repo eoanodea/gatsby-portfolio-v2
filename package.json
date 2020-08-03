@@ -60,6 +60,7 @@
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "popmotion": "^8.7.3",
+    "react-headroom": "^3.0.0",
     "styled-components": "^5.1.1"
   }
 }

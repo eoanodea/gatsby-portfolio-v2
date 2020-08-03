@@ -3,9 +3,10 @@ import { graphql } from 'gatsby';
 import PageProps from '../models/PageProps';
 import DefaultLayout from '../layouts';
 
+import { Hero } from '../sections/Hero';
+import { Projects } from '../sections/Projects';
+
 import './index.scss';
-import { CardList } from '../components/CardList';
-import MouseIcon from '../components/MouseIcon';
 
 class IndexPage extends React.Component<PageProps> {
   public render() {
@@ -13,16 +14,14 @@ class IndexPage extends React.Component<PageProps> {
     const { edges } = data.allMarkdownRemark;
 
     return (
-      <div className="container">
+      <>
         <DefaultLayout />
-        <div className="hero">
-          <h1 className="title">Hello</h1>
-          <h4 className="desc">Welcome to my potfolio</h4>
-          <MouseIcon />
-        </div>
 
-        {edges ? <CardList edges={edges} /> : null}
-      </div>
+        <div className="container">
+          <Hero />
+          <Projects edges={edges} />
+        </div>
+      </>
     );
   }
 }

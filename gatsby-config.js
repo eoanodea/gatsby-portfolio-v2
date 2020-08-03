@@ -2,6 +2,13 @@ module.exports = {
   siteMetadata: {
     title: `Eoan O'Dea Portfolio`,
     titleTemplate: `%s · Full Stack Developer, Designer, Engineer & Entrepreneur`,
+    logo: `/logo.png`,
+    author: {
+      name: `Eoan O'Dea`,
+      summary: `A Computer Science student and Freelance Web Developer`
+    },
+    description: `Some description`,
+    url: `https://something.or.other`,
     logo: `/logo.png`
   },
   plugins: [
