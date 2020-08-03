@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import MouseIcon from './MouseIcon';
 
 const SectionContainer = styled.div`
   min-height: 100vh;

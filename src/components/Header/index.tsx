@@ -133,7 +133,7 @@ const Image = styled.img`
   z-index: 20;
 `;
 
-const menuLinks: [IMenuItem] = [
+const menuLinks: IMenuItem[] = [
   { name: 'home', link: '/' },
   { name: 'projects', link: '#projects' }
 ];

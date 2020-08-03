@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { MenuItem } from './MenuItem';
+
 import { IMenuProps } from '../../interfaces/header-interfaces';
+import { MenuItem } from './MenuItem';
 
 const variants = {
   open: {

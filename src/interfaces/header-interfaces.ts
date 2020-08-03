@@ -4,7 +4,7 @@ export interface IMenuItem {
 }
 
 export interface IMenuProps {
-  menuLinks: [IMenuItem];
+  menuLinks: IMenuItem[];
 }
 
 export interface IMenuItemProps {
