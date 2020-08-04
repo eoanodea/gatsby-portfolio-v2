@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { IMenuItemProps } from '../../interfaces/header-interfaces';
+import LinkAnimated from '../LinkAnimated';
 
 const variants = {
   open: {
@@ -27,7 +28,9 @@ export const MenuItem = ({ item: { name, link }, toggle }: IMenuItemProps) => {
   return (
     <Item onClick={toggle} variants={variants} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
       <h1>
-        <Link to={link}>{name}.</Link>
+        <Link to={link}>
+          <LinkAnimated color="#fff">{name}.</LinkAnimated>
+        </Link>
       </h1>
     </Item>
   );

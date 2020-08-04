@@ -124,7 +124,6 @@ const Background = styled(motion.div).attrs(() => ({
   bottom: 0;
   width: 100%;
   height: calc(100vh + 96px);
-  z-index: 0;
 `;
 
 const Image = styled.img`
@@ -158,15 +157,8 @@ const Header = () => {
         </Link>
       </div>
       <Toggler initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
-        {isOpen ? (
-          <React.Fragment>
-            <Background className="menu-background" variants={sidebar} onClick={() => toggleOpen()} />
-            <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
-          </React.Fragment>
-        ) : (
-          <Background className="menu-background" variants={sidebar} onClick={() => toggleOpen()} />
-        )}
-
+        <Background className="menu-background" variants={sidebar} onClick={() => toggleOpen()} />
+        {isOpen && <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />}
         <MenuToggle toggle={() => toggleOpen()} />
       </Toggler>
     </HeaderContainer>

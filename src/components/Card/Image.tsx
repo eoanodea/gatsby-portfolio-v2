@@ -25,7 +25,7 @@ export const Image = ({ title, featureImg, isSelected, pointOfInterest = 0, back
         src={featureImg}
         alt={title}
         initial={false}
-        animate={isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }}
+        animate={isSelected ? { x: -50, y: -20 } : { x: -pointOfInterest, y: 0 }}
         transition={closeSpring}
       />
     </motion.div>

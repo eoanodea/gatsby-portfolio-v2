@@ -49,10 +49,6 @@ a {
   transition: 0.2s ease;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 body {
   background: black;
   color: #fff;
@@ -86,9 +82,14 @@ body {
   padding: 45px 25px;
 }
 
+.title {
+  border-bottom: 1px solid var(--divider);
+  padding: 20px 0;
+}
+
 .date {
   color: var(--secondary);
-  font-size: 14px;
+  font-size: 1.5em;
   text-transform: uppercase;
 }
 
