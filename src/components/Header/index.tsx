@@ -134,7 +134,8 @@ const Image = styled.img`
 
 const menuLinks: IMenuItem[] = [
   { name: 'home', link: '/' },
-  { name: 'projects', link: '#projects' }
+  { name: 'projects', link: '#projects' },
+  { name: 'contact', link: '#contact' }
 ];
 
 const Header = () => {
@@ -158,7 +159,7 @@ const Header = () => {
       </div>
       <Toggler initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
         <Background className="menu-background" variants={sidebar} onClick={() => toggleOpen()} />
-        {isOpen && <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />}
+        <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
         <MenuToggle toggle={() => toggleOpen()} />
       </Toggler>
     </HeaderContainer>

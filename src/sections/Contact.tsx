@@ -28,10 +28,11 @@ const Form = styled.form`
 
   button {
     background-color: #f35fb4;
-    color: #000;
+    color: #fff;
+    text-transform: uppercase;
     border-radius: 8px;
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin: 30px 0;
     border: none;
     transition: 0.2s ease;
