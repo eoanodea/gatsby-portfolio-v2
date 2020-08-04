@@ -24,7 +24,6 @@
     "@types/react-headroom": "^2.2.1",
     "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.2",
-    "gatsby": "^2.24.26",
     "gatsby-plugin-manifest": "^2.4.21",
     "gatsby-plugin-offline": "^3.2.21",
     "gatsby-plugin-react-helmet": "^3.3.10",
@@ -52,6 +51,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "gatsby": "^2.24.26",
     "@popmotion/popcorn": "^0.4.4",
     "babel-plugin-styled-components": "^1.11.1",
     "framer-motion": "^2.3.0",
