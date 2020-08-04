@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Section as ScrollSection } from 'react-scroll-section';
 
-const SectionContainer = styled.div`
+const SectionContainer = styled(ScrollSection)`
   min-height: 100vh;
   min-width: 320px;
   max-width: 1366px;
@@ -19,4 +20,4 @@ const SectionContainer = styled.div`
   }
 `;
 
-export const Section = ({ children }: any) => <SectionContainer>{children}</SectionContainer>;
+export const Section = ({ id, children }: any) => <SectionContainer id={id}>{children}</SectionContainer>;

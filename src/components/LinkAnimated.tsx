@@ -2,6 +2,7 @@ import styled from 'styled-components';
 // import { IThemeProps } from "./Layout"
 
 interface IProps {
+  selected: boolean;
   color: string;
 }
 
@@ -19,7 +20,7 @@ const LinkAnimated = styled.span`
     content: '';
     position: absolute;
     right: 0;
-    width: 0;
+    width: ${(props: IProps) => (props.selected ? '100%' : '0')};
     bottom: -5px;
     background: ${(props: IProps) => props.color};
     height: 8px;

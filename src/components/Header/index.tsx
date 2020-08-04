@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { motion, useCycle } from 'framer-motion';
 import { useDimensions } from '../../hooks/useDimensions';
 import Navigation from './Navigation';
-import { IMenuItem } from '../../interfaces/header-interfaces';
 
 const sidebar = {
   open: (height = 1080) => ({
@@ -20,7 +19,7 @@ const sidebar = {
   closed: {
     clipPath: 'circle(30px at 46px 46px)',
     transition: {
-      delay: 0.5,
+      delay: 0.2,
       type: 'spring',
       stiffness: 400,
       damping: 40
@@ -132,12 +131,6 @@ const Image = styled.img`
   z-index: 20;
 `;
 
-const menuLinks: IMenuItem[] = [
-  { name: 'home', link: '/' },
-  { name: 'projects', link: '#projects' },
-  { name: 'contact', link: '#contact' }
-];
-
 const Header = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
@@ -159,7 +152,7 @@ const Header = () => {
       </div>
       <Toggler initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
         <Background className="menu-background" variants={sidebar} onClick={() => toggleOpen()} />
-        <Navigation menuLinks={menuLinks} toggle={() => toggleOpen()} />
+        <Navigation toggle={() => toggleOpen()} />
         <MenuToggle toggle={() => toggleOpen()} />
       </Toggler>
     </HeaderContainer>

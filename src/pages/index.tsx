@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import PageProps from '../models/PageProps';
 import DefaultLayout from '../layouts';
+import { ScrollingProvider } from 'react-scroll-section';
 
 import { Hero } from '../sections/Hero';
 import { Projects } from '../sections/Projects';
@@ -16,13 +17,13 @@ class IndexPage extends React.Component<PageProps> {
 
     return (
       <>
-        <DefaultLayout />
+        <ScrollingProvider className="container">
+          <DefaultLayout />
 
-        <div className="container">
           <Hero />
           <Projects edges={edges} />
           <Contact />
-        </div>
+        </ScrollingProvider>
       </>
     );
   }

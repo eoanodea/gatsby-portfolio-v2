@@ -9,5 +9,5 @@ export interface IMenuProps {
 
 export interface IMenuItemProps {
   toggle: () => void;
-  item: IMenuItem;
+  selected: boolean;
 }

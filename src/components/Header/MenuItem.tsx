@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { IMenuItemProps } from '../../interfaces/header-interfaces';
@@ -24,13 +23,19 @@ const variants = {
   }
 };
 
-export const MenuItem = ({ item: { name, link }, toggle }: IMenuItemProps) => {
+interface IProps {
+  name: string;
+  selected: boolean;
+  toggle: () => void;
+}
+
+export const MenuItem = ({ name, selected, toggle }: IProps) => {
   return (
-    <Item onClick={toggle} variants={variants} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+    <Item onClick={() => toggle()} variants={variants} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
       <h1>
-        <Link to={link}>
-          <LinkAnimated color="#fff">{name}.</LinkAnimated>
-        </Link>
+        <LinkAnimated color="#fff" selected={selected}>
+          {name}.
+        </LinkAnimated>
       </h1>
     </Item>
   );

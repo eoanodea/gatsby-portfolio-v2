@@ -79,7 +79,7 @@ export class Contact extends React.Component<{}, IState> {
   render() {
     const { status, sending } = this.state;
     return (
-      <Section>
+      <Section id={'contact'}>
         <h2 className="title">Contact</h2>
         <Form onSubmit={this.submitForm} action="https://formspree.io/mbjzwznb" method="POST">
           <label>Your Name:</label>

@@ -2,8 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { IMenuProps } from '../../interfaces/header-interfaces';
 import { MenuItem } from './MenuItem';
+
+import { SectionLinks } from 'react-scroll-section';
 
 const variants = {
   open: {
@@ -38,15 +39,24 @@ const Menu = styled(motion.ul).attrs(() => ({
   align-items: baseline;
 `;
 
-interface IProps extends IMenuProps {
+interface IProps {
   toggle: () => void;
 }
 
-const Navigation = ({ toggle, menuLinks }: IProps) => (
+const Navigation = ({ toggle }: IProps) => (
   <Menu variants={variants}>
-    {menuLinks.map((dat, i) => (
-      <MenuItem item={dat} key={i} toggle={toggle} />
-    ))}
+    <SectionLinks>
+      {({ allLinks }: any) =>
+        Object.entries(allLinks).map(([key, link]: any) => {
+          const clickItem = () => {
+            toggle();
+            link.onClick();
+          };
+
+          return <MenuItem name={key.toUpperCase()} key={key} toggle={clickItem} selected={link.isSelected} />;
+        })
+      }
+    </SectionLinks>
   </Menu>
 );
 
