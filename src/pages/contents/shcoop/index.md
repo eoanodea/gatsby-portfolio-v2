@@ -7,7 +7,7 @@ excerpt: 'Competitive party game hybrid application'
 backgroundColor: '#959684'
 isLight: false
 pointOfInterest: 120
-featureImg: 'icon.png'
+featureImg: 'a.jpg'
 repositoryUrl: https://github.com/drinking-game-app/frontend
 projectUrl: https://shcoop.wspace.ie
 togglId: 160370775

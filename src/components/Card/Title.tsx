@@ -17,7 +17,7 @@ export const Title = ({ title, categories, isSelected }: IProps) => {
     open: {
       x,
       y,
-      borderRadius: 20,
+      borderRadius: 8,
       backgroundColor: '#1d1d20',
       transition: { duration: 0.5 },
       padding: '20px'
