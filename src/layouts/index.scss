@@ -279,8 +279,8 @@ li {
   .card {
     flex: 1 0 100%;
     max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .card:nth-child(4n + 1),

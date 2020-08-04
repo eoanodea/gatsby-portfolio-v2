@@ -104,7 +104,7 @@ const HeaderContainer = styled(Headroom)`
   }
 
   transition: 0.2s ease;
-  z-index: 20;
+  z-index: 1;
   position: absolute;
   width: 100%;
 
