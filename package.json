@@ -16,9 +16,12 @@
     "build": "gatsby build",
     "start": "gatsby develop",
     "fix": "prettier --write 'src/**/*.{ts,tsx,scss,md}' && tslint --fix 'src/**/*.{ts,tsx}' -p tsconfig.json && stylelint --fix 'src/**/*.scss' ",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "predeploy": "npm run fix && npm run build",
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/react-headroom": "^2.2.1",
