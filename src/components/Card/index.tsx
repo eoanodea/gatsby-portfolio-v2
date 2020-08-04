@@ -64,10 +64,12 @@ export const Card = memo(
         <Overlay isSelected={isSelected} toggleCard={toggleCard} />
         <div className={`card-content-container ${isSelected ? 'open' : ''}`}>
           <motion.div
+            variants={{ open: { x: 0, y: 10 }, closed: { x: 0, y: 30 } }}
             ref={cardRef}
             className="card-content"
             style={{ ...inverted, zIndex, y }}
-            animate={{ y: isSelected ? 10 : 30 }}
+            animate={isSelected ? 'open' : 'closed'}
+            layout
             transition={isSelected ? openSpring : closeSpring}
             drag={isSelected ? 'y' : false}
             dragConstraints={constraints}
