@@ -24,8 +24,8 @@ export function useInvertedBorderRadius(radius: number) {
     function updateRadius() {
       const latestX = inverted.scaleX.get();
       const latestY = inverted.scaleY.get();
-      const xRadius = latestX * radius + 'px';
-      const yRadius = latestY * radius + 'px';
+      const xRadius = `${latestX * radius}px`;
+      const yRadius = `${latestY * radius}px`;
 
       borderRadius.set(`${xRadius} ${yRadius}`);
     }

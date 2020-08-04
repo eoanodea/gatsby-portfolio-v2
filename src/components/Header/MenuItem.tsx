@@ -37,8 +37,8 @@ export const MenuItem = ({ item: { name, link }, toggle }: IMenuItemProps) => {
 };
 
 const Item = styled(motion.li).attrs(() => ({
-  initial: 'closed',
-  variants
+  variants,
+  initial: 'closed'
 }))`
   margin: 0;
   padding: 0;

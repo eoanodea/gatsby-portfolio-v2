@@ -22,8 +22,8 @@ const variants = {
 };
 
 const Menu = styled(motion.ul).attrs(() => ({
-  initial: 'closed',
-  variants
+  variants,
+  initial: 'closed'
 }))`
   margin: 0;
   padding: 0;

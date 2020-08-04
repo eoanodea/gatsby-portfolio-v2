@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { memo, useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 
 import { Content } from './Content';
@@ -102,5 +101,5 @@ const Overlay = ({ isSelected, toggleCard }: any) => (
     transition={{ duration: 0.3 }}
     style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
     className="overlay"
-  ></motion.div>
+  />
 );

@@ -114,8 +114,8 @@ const HeaderContainer = styled(Headroom)`
 `;
 
 const Background = styled(motion.div).attrs(() => ({
-  initial: 'closed',
-  sidebar
+  sidebar,
+  initial: 'closed'
 }))`
   position: fixed;
   top: 0;

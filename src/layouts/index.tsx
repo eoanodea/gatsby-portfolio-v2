@@ -28,7 +28,7 @@ const DefaultLayout = ({ title = null, description = null, image = null, pathnam
       }
     }) => {
       const seo = {
-        defaultTitle: defaultTitle,
+        defaultTitle,
         title: title || defaultTitle,
         description: description || defaultDescription,
         image: `${siteUrl}${image || defaultImage}`,
