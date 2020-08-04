@@ -10,5 +10,11 @@ interface IProps {
 }
 
 export const Projects = ({ edges }: IProps) => {
-  return <Section id="projects">{edges ? <CardList edges={edges} /> : <p>No Projects Found</p>}</Section>;
+  return (
+    <Section id="projects">
+      <h2 className="title">Projects</h2>
+
+      {edges ? <CardList edges={edges} /> : <p>No Projects Found</p>}
+    </Section>
+  );
 };

@@ -7,6 +7,7 @@ import { Hero } from '../sections/Hero';
 import { Projects } from '../sections/Projects';
 
 import './index.scss';
+import { Contact } from '../sections/Contact';
 
 class IndexPage extends React.Component<PageProps> {
   public render() {
@@ -20,6 +21,7 @@ class IndexPage extends React.Component<PageProps> {
         <div className="container">
           <Hero />
           <Projects edges={edges} />
+          <Contact />
         </div>
       </>
     );
