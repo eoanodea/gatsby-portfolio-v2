@@ -107,6 +107,6 @@ export function useWheelScroll(
     onWheelCallback(event);
   };
 
-  //@ts-ignore
+  // @ts-ignore
   useDomEvent(ref, 'wheel', isActive && onWheel, { passive: false });
 }
