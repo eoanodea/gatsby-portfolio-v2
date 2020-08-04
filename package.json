@@ -27,9 +27,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0",
     "stylelint": "^13.6.1",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.2",
@@ -43,6 +40,9 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
     "node-sass": "^4.14.1",
     "gatsby-plugin-manifest": "^2.4.21",
     "gatsby-plugin-offline": "^3.2.21",
