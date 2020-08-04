@@ -12,6 +12,7 @@ import { StaticQuery, graphql } from 'gatsby';
 // }
 
 interface IProps {
+  showMenu?: boolean | null;
   title?: string | null;
   description?: string | null;
   image?: string | null;
@@ -19,7 +20,7 @@ interface IProps {
   project?: boolean | null;
 }
 
-const DefaultLayout = ({ title = null, description = null, image = null, pathname = null, project = null }: IProps) => (
+const DefaultLayout = ({ showMenu = null, title = null, description = null, image = null, pathname = null, project = null }: IProps) => (
   <StaticQuery
     query={query}
     render={({
@@ -52,7 +53,7 @@ const DefaultLayout = ({ title = null, description = null, image = null, pathnam
             {seo.image && <meta name="twitter:image" content={seo.image} />}
             <link rel="canonical" href={seo.url} />
           </Helmet>
-          <Header />
+          {showMenu && <Header />}
         </>
       );
     }}

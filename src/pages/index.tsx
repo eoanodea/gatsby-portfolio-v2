@@ -18,7 +18,7 @@ class IndexPage extends React.Component<PageProps> {
     return (
       <>
         <ScrollingProvider className="container">
-          <DefaultLayout />
+          <DefaultLayout showMenu={true} />
 
           <Hero />
           <Projects edges={edges} />

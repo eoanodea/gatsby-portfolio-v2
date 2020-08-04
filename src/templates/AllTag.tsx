@@ -3,6 +3,7 @@ import Link from 'gatsby-link';
 import './AllTag.scss';
 import PageProps from '../models/PageProps';
 import DefaultLayout from '../layouts';
+import { Section } from '../components/Section';
 
 class AllTagTemplate extends React.PureComponent<PageProps> {
   public render() {
@@ -12,16 +13,19 @@ class AllTagTemplate extends React.PureComponent<PageProps> {
       return (
         <>
           <DefaultLayout />
-          <div className="all-tags-content">
-            <p> Tag List </p>
-            <ul>
-              {tags.map((tag: any, index: number) => (
-                <li key={index}>
-                  <Link to={`/tags/${tag}`}>{tag}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+          <Section id={'tags'}>
+            <div className="all-tags-content">
+              <p> Tag List </p>
+              <ul>
+                {tags.map((tag: any, index: number) => (
+                  <li key={index}>
+                    <Link to={`/tags/${tag}`}>{tag}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Section>
         </>
       );
     }
