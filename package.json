@@ -43,6 +43,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^2.2.1",
     "@popmotion/popcorn": "^0.4.4",
     "babel-plugin-styled-components": "^1.11.1",
     "framer-motion": "^2.3.0",
