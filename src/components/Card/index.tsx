@@ -22,7 +22,7 @@ interface Props extends Frontmatter {
 const dismissDistance = 150;
 
 export const Card = memo(
-  ({ isSelected, cardI, toggleActiveCard, featureImg, title, excerpt, categories, pointOfInterest, backgroundColor }: Props) => {
+  ({ isSelected, cardI, toggleActiveCard, featureImg, title, categories, pointOfInterest, backgroundColor, html }: Props) => {
     /**
      * If the card is selected, set active card to null
      * if not, set the current card to active
@@ -84,7 +84,7 @@ export const Card = memo(
               toggleCard={toggleCard}
             />
             <Title title={title} categories={categories} isSelected={isSelected} />
-            <Content content={excerpt} />
+            <Content content={html} />
           </motion.div>
         </div>
       </li>

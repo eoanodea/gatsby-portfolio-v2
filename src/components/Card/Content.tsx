@@ -8,8 +8,10 @@ interface IProps {
 export const Content = React.memo(({ content }: IProps) => {
   const inverted = useInvertedScale();
   return (
-    <motion.div className="content-container" style={{ ...inverted, originY: 0, originX: 0 }}>
-      <p>{content}</p>
-    </motion.div>
+    <motion.div
+      className="content-container"
+      style={{ ...inverted, originY: 0, originX: 0 }}
+      dangerouslySetInnerHTML={{ __html: content }}
+    ></motion.div>
   );
 });

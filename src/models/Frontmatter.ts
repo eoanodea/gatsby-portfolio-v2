@@ -10,6 +10,7 @@ interface Frontmatter {
   featureImg: {
     publicURL: string;
   };
+  html: string;
 }
 
 export default Frontmatter;

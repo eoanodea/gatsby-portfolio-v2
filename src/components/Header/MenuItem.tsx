@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { IMenuItemProps } from '../../interfaces/header-interfaces';
 import LinkAnimated from '../LinkAnimated';
 
 const variants = {
@@ -45,10 +44,9 @@ const Item = styled(motion.li).attrs(() => ({
   variants,
   initial: 'closed'
 }))`
-  margin: 0;
+  margin: 40px 0;
   padding: 0;
   list-style: none;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   cursor: pointer;

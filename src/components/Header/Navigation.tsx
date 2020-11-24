@@ -39,6 +39,12 @@ const Menu = styled(motion.ul).attrs(() => ({
   align-items: baseline;
 `;
 
+const MenuListItem = styled(MenuItem)`
+  fontSize: '1.3em'
+  margin: '40px 0'
+  background-color; red;
+`;
+
 interface IProps {
   toggle: () => void;
 }
@@ -53,7 +59,7 @@ const Navigation = ({ toggle }: IProps) => (
             link.onClick();
           };
 
-          return <MenuItem name={key.toUpperCase()} key={key} toggle={clickItem} selected={link.isSelected} />;
+          return <MenuListItem name={key.toUpperCase()} key={key} toggle={clickItem} selected={link.isSelected} />;
         })
       }
     </SectionLinks>
