@@ -43,7 +43,7 @@ export const Card = memo(
     const constraints = useScrollConstraints(cardRef, isSelected);
 
     function checkSwipeToDismiss() {
-      if (y.get() > dismissDistance || y.get() < dismissDistance * -2) toggleCard();
+      if (y.get() > dismissDistance) toggleCard();
     }
 
     function checkZIndex(latest: { scaleX: number }) {
@@ -63,7 +63,7 @@ export const Card = memo(
         <Overlay isSelected={isSelected} toggleCard={toggleCard} />
         <div className={`card-content-container ${isSelected ? 'open' : ''}`}>
           <motion.div
-            variants={{ open: { x: 0, y: 10 }, closed: { x: 0, y: 30 } }}
+            // variants={{ open: { x: 0, y: 10 }, closed: { x: 0, y: 30 } }}
             ref={cardRef}
             className="card-content"
             style={{ ...inverted, zIndex, y }}

@@ -11,21 +11,18 @@ interface IProps {
 export const Title = ({ title, categories, isSelected }: IProps) => {
   const inverted = useInvertedScale();
   const x = isSelected ? 0 : 15;
-  const y = isSelected ? -50 : x;
+  const y = x;
 
   const variants = {
     open: {
       x,
       y,
-      borderRadius: 8,
-      backgroundColor: '#1d1d20',
-      transition: { duration: 0.5 },
+      backgroundColor: 'rgb(0 0 0 / 0%)',
       padding: '20px'
     },
     closed: {
       x,
       y,
-      transition: { duration: 0.2 },
       backgroundColor: 'rgb(0 0 0 / 0%)'
     }
   };
